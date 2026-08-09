@@ -1,8 +1,11 @@
 {
   "id": "mendocino-farms",
   "displayName": "Mendocino Farms",
-  "version": 1,
-  "matchHints": ["mendocino farms", "mendocino-farms"],
+  "version": 2,
+  "matchHints": [
+    "mendocino farms",
+    "mendocino-farms"
+  ],
   "source": {
     "url": "https://contact.mendocinofarms.com/wp-content/uploads/2026/02/Feb2026_NutritionalAllergen.pdf",
     "label": "Mendocino Farms Nutritional & Allergen PDF (Feb 2026)"
@@ -11,34 +14,190 @@
   "remoteUrl": "https://raw.githubusercontent.com/shamilahfaria/menu-macros/main/packs/mendocino-farms.json",
   "items": [
     {
-      "id": "the-farm-club",
-      "canonicalName": "The Farm Club",
-      "aliases": ["Farm Club", "The Farm Club Sandwich"],
-      "calories": 760,
-      "proteinG": 40,
-      "carbsG": 69,
-      "fatG": 34,
-      "sodiumMg": 1620,
-      "sugarG": 7,
-      "fiberG": 6,
-      "extras": [
-        { "label": "Calories from fat", "value": "320" },
-        { "label": "Saturated fat", "value": "8g" },
-        { "label": "Trans fat", "value": "0g" },
-        { "label": "Cholesterol", "value": "100mg" }
+      "id": "smoky-bbq-brioche-sandwich",
+      "canonicalName": "Smoky BBQ Brioche Sandwich",
+      "aliases": [
+        "Smoky BBQ Brioche"
       ],
-      "modifiers": [
+      "calories": 670,
+      "proteinG": 37,
+      "carbsG": 64,
+      "fatG": 27,
+      "sodiumMg": 1500,
+      "sugarG": 27,
+      "fiberG": 3,
+      "extras": [
         {
-          "canonicalName": "Add Chicken",
-          "aliases": ["Chicken", "Add chicken"],
-          "deltas": { "calories": 110, "proteinG": 20, "fatG": 2.5, "sodiumMg": 500 }
+          "label": "Serving",
+          "value": "12.2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "260"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "140"
+        }
+      ]
+    },
+    {
+      "id": "the-farmhouse-ranch-salad",
+      "canonicalName": "The Farmhouse Ranch Salad",
+      "aliases": [],
+      "calories": 350,
+      "proteinG": 19,
+      "carbsG": 38,
+      "fatG": 16,
+      "sodiumMg": 770,
+      "sugarG": 8,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "150"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "id": "the-farmhouse-ranch-salad-no-dressing",
+      "canonicalName": "The Farmhouse Ranch Salad (No Dressing)",
+      "aliases": [
+        "The Farmhouse Ranch Salad without dressing"
+      ],
+      "calories": 460,
+      "proteinG": 17,
+      "carbsG": 38,
+      "fatG": 29,
+      "sodiumMg": 1260,
+      "sugarG": 9,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "270"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "9"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "45"
+        }
+      ]
+    },
+    {
+      "id": "seasonal-goat-with-sweet-citrus",
+      "canonicalName": "Seasonal GOAT with Sweet Citrus",
+      "aliases": [
+        "Seasonal GOAT Salad"
+      ],
+      "calories": 790,
+      "proteinG": 37,
+      "carbsG": 54,
+      "fatG": 52,
+      "sodiumMg": 1070,
+      "sugarG": 35,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "18.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "470"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "7"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "70"
+        }
+      ]
+    },
+    {
+      "id": "seasonal-goat-with-sweet-citrus-no-dressing",
+      "canonicalName": "Seasonal GOAT with Sweet Citrus (No Dressing)",
+      "aliases": [
+        "Seasonal GOAT with Sweet Citrus without dressing"
+      ],
+      "calories": 580,
+      "proteinG": 36,
+      "carbsG": 48,
+      "fatG": 31,
+      "sodiumMg": 820,
+      "sugarG": 30,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "280"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "70"
         }
       ]
     },
     {
       "id": "not-so-fried-chicken",
       "canonicalName": "\"Not So Fried\" Chicken",
-      "aliases": ["Not So Fried Chicken", "Not So Fried Chicken Sandwich"],
+      "aliases": [
+        "Not So Fried Chicken Sandwich",
+        "NSF Chicken"
+      ],
       "calories": 900,
       "proteinG": 35,
       "carbsG": 79,
@@ -47,16 +206,614 @@
       "sugarG": 10,
       "fiberG": 5,
       "extras": [
-        { "label": "Calories from fat", "value": "450" },
-        { "label": "Saturated fat", "value": "6g" },
-        { "label": "Trans fat", "value": "0g" },
-        { "label": "Cholesterol", "value": "85mg" }
+        {
+          "label": "Serving",
+          "value": "14.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "450"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "85"
+        }
+      ]
+    },
+    {
+      "id": "peruvian-steak-sandwich",
+      "canonicalName": "Peruvian Steak Sandwich",
+      "aliases": [
+        "Peruvian Steak"
+      ],
+      "calories": 780,
+      "proteinG": 41,
+      "carbsG": 54,
+      "fatG": 46,
+      "sodiumMg": 2340,
+      "sugarG": 13,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "11.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "410"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "12"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "110"
+        }
+      ]
+    },
+    {
+      "id": "prosciutto-chicken",
+      "canonicalName": "Prosciutto & Chicken",
+      "aliases": [
+        "Prosciutto and Chicken Sandwich"
+      ],
+      "calories": 790,
+      "proteinG": 44,
+      "carbsG": 63,
+      "fatG": 38,
+      "sodiumMg": 1430,
+      "sugarG": 10,
+      "fiberG": 5,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "360"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "10"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "85"
+        }
+      ]
+    },
+    {
+      "id": "chimichurri-steak-bacon",
+      "canonicalName": "Chimichurri Steak & Bacon",
+      "aliases": [
+        "Chimichurri Steak and Bacon Sandwich"
+      ],
+      "calories": 950,
+      "proteinG": 43,
+      "carbsG": 76,
+      "fatG": 51,
+      "sodiumMg": 2270,
+      "sugarG": 18,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "470"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "10"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "105"
+        }
+      ]
+    },
+    {
+      "id": "vegan-banh-mi",
+      "canonicalName": "Vegan Banh Mi",
+      "aliases": [
+        "Vegan Banh Mi Sandwich"
+      ],
+      "calories": 670,
+      "proteinG": 22,
+      "carbsG": 77,
+      "fatG": 29,
+      "sodiumMg": 1560,
+      "sugarG": 18,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12.4 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "270"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "the-happy-hippie",
+      "canonicalName": "The Happy Hippie",
+      "aliases": [
+        "The Happy Hippie Sandwich"
+      ],
+      "calories": 820,
+      "proteinG": 14,
+      "carbsG": 88,
+      "fatG": 47,
+      "sodiumMg": 960,
+      "sugarG": 15,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "440"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "chicken-parm-dip",
+      "canonicalName": "Chicken Parm Dip",
+      "aliases": [
+        "Chicken Parmesan Dip"
+      ],
+      "calories": 940,
+      "proteinG": 46,
+      "carbsG": 75,
+      "fatG": 49,
+      "sodiumMg": 2030,
+      "sugarG": 4,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "11.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "450"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "12"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "110"
+        }
+      ]
+    },
+    {
+      "id": "the-farm-club",
+      "canonicalName": "The Farm Club",
+      "aliases": [
+        "The Farm Club Sandwich"
+      ],
+      "calories": 760,
+      "proteinG": 40,
+      "carbsG": 69,
+      "fatG": 34,
+      "sodiumMg": 1620,
+      "sugarG": 7,
+      "fiberG": 6,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "320"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "8"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "id": "chicken-pesto-caprese",
+      "canonicalName": "Chicken Pesto Caprese",
+      "aliases": [],
+      "calories": 800,
+      "proteinG": 42,
+      "carbsG": 57,
+      "fatG": 42,
+      "sodiumMg": 1180,
+      "sugarG": 5,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "400"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "9"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "90"
+        }
+      ]
+    },
+    {
+      "id": "vegetarian-pesto-caprese",
+      "canonicalName": "Vegetarian Pesto Caprese",
+      "aliases": [],
+      "calories": 950,
+      "proteinG": 39,
+      "carbsG": 57,
+      "fatG": 57,
+      "sodiumMg": 810,
+      "sugarG": 5,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "550"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "18"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "75"
+        }
+      ]
+    },
+    {
+      "id": "turkey-avo-salsa-verde",
+      "canonicalName": "Turkey Avo Salsa Verde",
+      "aliases": [
+        "Turkey Avo Salsa Verde Sandwich"
+      ],
+      "calories": 840,
+      "proteinG": 41,
+      "carbsG": 63,
+      "fatG": 45,
+      "sodiumMg": 1490,
+      "sugarG": 8,
+      "fiberG": 7,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "430"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "11"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "115"
+        }
+      ]
+    },
+    {
+      "id": "vegetarian-pesto-caprese-half-sandwich",
+      "canonicalName": "Vegetarian Pesto Caprese (Half Sandwich)",
+      "aliases": [
+        "1/2 Vegetarian Pesto Caprese",
+        "Half Vegetarian Pesto Caprese",
+        "Chicken Pesto Caprese - Vegetarian"
+      ],
+      "calories": 480,
+      "proteinG": 19,
+      "carbsG": 28,
+      "fatG": 28,
+      "sodiumMg": 410,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "280"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "9"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "id": "chicken-pesto-caprese-half-sandwich",
+      "canonicalName": "Chicken Pesto Caprese (Half Sandwich)",
+      "aliases": [
+        "1/2 Chicken Pesto Caprese",
+        "Half Chicken Pesto Caprese"
+      ],
+      "calories": 400,
+      "proteinG": 21,
+      "carbsG": 28,
+      "fatG": 21,
+      "sodiumMg": 590,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "200"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "45"
+        }
+      ]
+    },
+    {
+      "id": "the-farm-club-half-sandwich",
+      "canonicalName": "The Farm Club (Half Sandwich)",
+      "aliases": [
+        "1/2 The Farm Club",
+        "Half The Farm Club"
+      ],
+      "calories": 380,
+      "proteinG": 20,
+      "carbsG": 34,
+      "fatG": 17,
+      "sodiumMg": 810,
+      "sugarG": 4,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "160"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "50"
+        }
+      ]
+    },
+    {
+      "id": "vegan-banh-mi-half-sandwich",
+      "canonicalName": "Vegan Banh Mi (Half Sandwich)",
+      "aliases": [
+        "1/2 Vegan Banh Mi",
+        "Half Vegan Banh Mi"
+      ],
+      "calories": 330,
+      "proteinG": 11,
+      "carbsG": 39,
+      "fatG": 15,
+      "sodiumMg": 780,
+      "sugarG": 9,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "140"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "not-so-fried-chicken-half-sandwich",
+      "canonicalName": "\"Not So Fried\" Chicken (Half Sandwich)",
+      "aliases": [
+        "1/2 \"Not So Fried\" Chicken",
+        "Half \"Not So Fried\" Chicken"
+      ],
+      "calories": 450,
+      "proteinG": 17,
+      "carbsG": 39,
+      "fatG": 24,
+      "sodiumMg": 670,
+      "sugarG": 5,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "7.4 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "45"
+        }
+      ]
+    },
+    {
+      "id": "turkey-avo-salsa-verde-half-sandwich",
+      "canonicalName": "Turkey Avo Salsa Verde (Half Sandwich)",
+      "aliases": [
+        "1/2 Turkey Avo Salsa Verde",
+        "Half Turkey Avo Salsa Verde"
+      ],
+      "calories": 420,
+      "proteinG": 21,
+      "carbsG": 31,
+      "fatG": 23,
+      "sodiumMg": 740,
+      "sugarG": 4,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "55"
+        }
       ]
     },
     {
       "id": "avocado-quinoa-superfood-ensalada",
       "canonicalName": "Avocado & Quinoa Superfood Ensalada",
-      "aliases": ["Avocado and Quinoa Superfood Ensalada", "Avocado Quinoa Salad"],
+      "aliases": [
+        "Avocado Quinoa Salad",
+        "Avocado & Quinoa Superfood Salad"
+      ],
       "calories": 690,
       "proteinG": 19,
       "carbsG": 47,
@@ -65,10 +822,3002 @@
       "sugarG": 10,
       "fiberG": 15,
       "extras": [
-        { "label": "Calories from fat", "value": "470" },
-        { "label": "Saturated fat", "value": "8g" },
-        { "label": "Trans fat", "value": "0g" },
-        { "label": "Cholesterol", "value": "20mg" }
+        {
+          "label": "Serving",
+          "value": "16.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "470"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "8"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "20"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": [
+            "Chicken",
+            "Add Grilled Chicken",
+            "Roasted Chicken Breast"
+          ],
+          "deltas": {
+            "calories": 110,
+            "proteinG": 20,
+            "carbsG": 0,
+            "fatG": 2.5,
+            "sodiumMg": 500,
+            "sugarG": 0,
+            "fiberG": 0
+          }
+        },
+        {
+          "canonicalName": "Add Impossible Chorizo",
+          "aliases": [
+            "Impossible Chorizo"
+          ],
+          "deltas": {
+            "calories": 130,
+            "proteinG": 10,
+            "carbsG": 7,
+            "fatG": 7,
+            "sodiumMg": 430,
+            "fiberG": 2
+          }
+        },
+        {
+          "canonicalName": "Add Beyond Chorizo",
+          "aliases": [
+            "Beyond Chorizo"
+          ],
+          "deltas": {
+            "calories": 140,
+            "proteinG": 10,
+            "carbsG": 5,
+            "fatG": 9,
+            "sodiumMg": 410,
+            "fiberG": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "avocado-quinoa-superfood-ensalada-no-dressing",
+      "canonicalName": "Avocado & Quinoa Superfood Ensalada (No Dressing)",
+      "aliases": [
+        "Avocado & Quinoa Superfood Ensalada without dressing"
+      ],
+      "calories": 400,
+      "proteinG": 19,
+      "carbsG": 41,
+      "fatG": 22,
+      "sodiumMg": 570,
+      "sugarG": 5,
+      "fiberG": 14,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "14.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "210"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "id": "thai-mango-salad",
+      "canonicalName": "Thai Mango Salad",
+      "aliases": [],
+      "calories": 840,
+      "proteinG": 35,
+      "carbsG": 70,
+      "fatG": 50,
+      "sodiumMg": 1780,
+      "sugarG": 38,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "19.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "460"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "14"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "thai-mango-salad-no-dressing",
+      "canonicalName": "Thai Mango Salad (No Dressing)",
+      "aliases": [
+        "Thai Mango Salad without dressing"
+      ],
+      "calories": 640,
+      "proteinG": 34,
+      "carbsG": 55,
+      "fatG": 34,
+      "sodiumMg": 1020,
+      "sugarG": 25,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "320"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "12"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "baja-green-goddess-salad",
+      "canonicalName": "Baja Green Goddess Salad",
+      "aliases": [
+        "Baja Green Goddess"
+      ],
+      "calories": 600,
+      "proteinG": 15,
+      "carbsG": 50,
+      "fatG": 40,
+      "sodiumMg": 800,
+      "sugarG": 9,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "380"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "11"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "40"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken Adobado",
+          "aliases": [
+            "Chicken Adobado"
+          ],
+          "deltas": {
+            "calories": 100,
+            "proteinG": 17,
+            "carbsG": 2,
+            "fatG": 2,
+            "sodiumMg": 500,
+            "sugarG": 1,
+            "fiberG": 0
+          }
+        },
+        {
+          "canonicalName": "Add Impossible Chorizo",
+          "aliases": [
+            "Impossible Chorizo"
+          ],
+          "deltas": {
+            "calories": 130,
+            "proteinG": 10,
+            "carbsG": 7,
+            "fatG": 7,
+            "sodiumMg": 430,
+            "fiberG": 2
+          }
+        },
+        {
+          "canonicalName": "Add Beyond Chorizo",
+          "aliases": [
+            "Beyond Chorizo"
+          ],
+          "deltas": {
+            "calories": 140,
+            "proteinG": 10,
+            "carbsG": 5,
+            "fatG": 9,
+            "sodiumMg": 410,
+            "fiberG": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "baja-green-goddess-salad-no-dressing",
+      "canonicalName": "Baja Green Goddess Salad (No Dressing)",
+      "aliases": [
+        "Baja Green Goddess Salad without dressing"
+      ],
+      "calories": 410,
+      "proteinG": 15,
+      "carbsG": 46,
+      "fatG": 21,
+      "sodiumMg": 350,
+      "sugarG": 6,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "200"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "8"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-with-chicken",
+      "canonicalName": "Chen's Crispy Rice Salad with Chicken",
+      "aliases": [
+        "Chen's Crispy Rice Salad"
+      ],
+      "calories": 700,
+      "proteinG": 35,
+      "carbsG": 64,
+      "fatG": 37,
+      "sodiumMg": 1580,
+      "sugarG": 22,
+      "fiberG": 10,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "340"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-with-chicken-no-dressing",
+      "canonicalName": "Chen's Crispy Rice Salad with Chicken (No Dressing)",
+      "aliases": [
+        "Chen's Crispy Rice Salad with Chicken without dressing"
+      ],
+      "calories": 500,
+      "proteinG": 34,
+      "carbsG": 54,
+      "fatG": 20,
+      "sodiumMg": 960,
+      "sugarG": 15,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "14.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "190"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-with-tofu",
+      "canonicalName": "Chen's Crispy Rice Salad with Tofu",
+      "aliases": [],
+      "calories": 790,
+      "proteinG": 29,
+      "carbsG": 76,
+      "fatG": 46,
+      "sodiumMg": 1750,
+      "sugarG": 28,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "420"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-with-tofu-no-dressing",
+      "canonicalName": "Chen's Crispy Rice Salad with Tofu (No Dressing)",
+      "aliases": [
+        "Chen's Crispy Rice Salad with Tofu without dressing"
+      ],
+      "calories": 600,
+      "proteinG": 28,
+      "carbsG": 66,
+      "fatG": 30,
+      "sodiumMg": 1130,
+      "sugarG": 21,
+      "fiberG": 10,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "14.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "270"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "the-modern-caesar",
+      "canonicalName": "The Modern Caesar",
+      "aliases": [
+        "Modern Caesar Salad"
+      ],
+      "calories": 680,
+      "proteinG": 18,
+      "carbsG": 30,
+      "fatG": 56,
+      "sodiumMg": 920,
+      "sugarG": 9,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "530"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "9"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "150"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": [
+            "Chicken",
+            "Add Grilled Chicken",
+            "Roasted Chicken Breast"
+          ],
+          "deltas": {
+            "calories": 110,
+            "proteinG": 20,
+            "carbsG": 0,
+            "fatG": 2.5,
+            "sodiumMg": 500,
+            "sugarG": 0,
+            "fiberG": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "the-modern-caesar-no-dressing",
+      "canonicalName": "The Modern Caesar (No Dressing)",
+      "aliases": [
+        "The Modern Caesar without dressing"
+      ],
+      "calories": 260,
+      "proteinG": 13,
+      "carbsG": 25,
+      "fatG": 14,
+      "sodiumMg": 390,
+      "sugarG": 7,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "140"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "golden-state-cobb",
+      "canonicalName": "Golden State Cobb",
+      "aliases": [
+        "Golden State Cobb Salad"
+      ],
+      "calories": 750,
+      "proteinG": 30,
+      "carbsG": 29,
+      "fatG": 60,
+      "sodiumMg": 1430,
+      "sugarG": 9,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "19.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "560"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "13"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "240"
+        }
+      ]
+    },
+    {
+      "id": "golden-state-cobb-no-dressing",
+      "canonicalName": "Golden State Cobb (No Dressing)",
+      "aliases": [
+        "Golden State Cobb without dressing"
+      ],
+      "calories": 450,
+      "proteinG": 29,
+      "carbsG": 26,
+      "fatG": 28,
+      "sodiumMg": 880,
+      "sugarG": 7,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "260"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "10"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "230"
+        }
+      ]
+    },
+    {
+      "id": "not-so-fried-chicken-salad",
+      "canonicalName": "\"Not So Fried\" Chicken Salad",
+      "aliases": [
+        "Not So Fried Chicken - Salad Style"
+      ],
+      "calories": 740,
+      "proteinG": 31,
+      "carbsG": 50,
+      "fatG": 47,
+      "sodiumMg": 1510,
+      "sugarG": 21,
+      "fiberG": 7,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "19.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "440"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "65"
+        }
+      ]
+    },
+    {
+      "id": "not-so-fried-chicken-salad-no-dressing",
+      "canonicalName": "\"Not So Fried\" Chicken Salad (No Dressing)",
+      "aliases": [
+        "\"Not So Fried\" Chicken Salad without dressing"
+      ],
+      "calories": 420,
+      "proteinG": 27,
+      "carbsG": 36,
+      "fatG": 20,
+      "sodiumMg": 1020,
+      "sugarG": 11,
+      "fiberG": 7,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "190"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "65"
+        }
+      ]
+    },
+    {
+      "id": "avocado-and-quinoa-superfood-ensalada-wrap",
+      "canonicalName": "Avocado and Quinoa Superfood Ensalada Wrap",
+      "aliases": [
+        "Avocado Quinoa Wrap"
+      ],
+      "calories": 1120,
+      "proteinG": 27,
+      "carbsG": 108,
+      "fatG": 68,
+      "sodiumMg": 1760,
+      "sugarG": 9,
+      "fiberG": 16,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "19.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "630"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "16"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "id": "chen-s-crispy-rice-wrap",
+      "canonicalName": "Chen's Crispy Rice Wrap",
+      "aliases": [
+        "Chen's Crispy Rice Salad Wrap"
+      ],
+      "calories": 1040,
+      "proteinG": 23,
+      "carbsG": 127,
+      "fatG": 52,
+      "sodiumMg": 1800,
+      "sugarG": 25,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.6 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "480"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "12"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": [
+            "Chicken",
+            "Add Grilled Chicken",
+            "Roasted Chicken Breast"
+          ],
+          "deltas": {
+            "calories": 110,
+            "proteinG": 20,
+            "carbsG": 0,
+            "fatG": 2.5,
+            "sodiumMg": 500,
+            "sugarG": 0,
+            "fiberG": 0
+          }
+        },
+        {
+          "canonicalName": "Add Baked Marinated Tofu",
+          "aliases": [
+            "Baked Marinated Tofu",
+            "Marinated Tofu",
+            "Tofu"
+          ],
+          "deltas": {
+            "calories": 210,
+            "proteinG": 15,
+            "carbsG": 9,
+            "fatG": 14,
+            "sodiumMg": 770,
+            "sugarG": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "baja-green-goddess-wrap",
+      "canonicalName": "Baja Green Goddess Wrap",
+      "aliases": [],
+      "calories": 970,
+      "proteinG": 23,
+      "carbsG": 102,
+      "fatG": 55,
+      "sodiumMg": 1250,
+      "sugarG": 8,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "510"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "19"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "40"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken Adobado",
+          "aliases": [
+            "Chicken Adobado"
+          ],
+          "deltas": {
+            "calories": 100,
+            "proteinG": 17,
+            "carbsG": 2,
+            "fatG": 2,
+            "sodiumMg": 520,
+            "fiberG": 0
+          }
+        },
+        {
+          "canonicalName": "Add Impossible Chorizo",
+          "aliases": [
+            "Impossible Chorizo"
+          ],
+          "deltas": {
+            "calories": 130,
+            "proteinG": 10,
+            "carbsG": 7,
+            "fatG": 7,
+            "sodiumMg": 400,
+            "fiberG": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "modern-caesar-wrap",
+      "canonicalName": "Modern Caesar Wrap",
+      "aliases": [],
+      "calories": 1090,
+      "proteinG": 26,
+      "carbsG": 91,
+      "fatG": 70,
+      "sodiumMg": 1540,
+      "sugarG": 9,
+      "fiberG": 12,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "21.9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "660"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "16"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "140"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": [
+            "Chicken",
+            "Add Grilled Chicken",
+            "Roasted Chicken Breast"
+          ],
+          "deltas": {
+            "calories": 110,
+            "proteinG": 20,
+            "carbsG": 0,
+            "fatG": 2.5,
+            "sodiumMg": 500,
+            "sugarG": 0,
+            "fiberG": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "thai-mango-wrap",
+      "canonicalName": "Thai Mango Wrap",
+      "aliases": [],
+      "calories": 930,
+      "proteinG": 18,
+      "carbsG": 112,
+      "fatG": 48,
+      "sodiumMg": 1650,
+      "sugarG": 31,
+      "fiberG": 8,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "440"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "15"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": [
+            "Chicken",
+            "Add Grilled Chicken",
+            "Roasted Chicken Breast"
+          ],
+          "deltas": {
+            "calories": 110,
+            "proteinG": 20,
+            "carbsG": 0,
+            "fatG": 2.5,
+            "sodiumMg": 500,
+            "sugarG": 0,
+            "fiberG": 0
+          }
+        },
+        {
+          "canonicalName": "Add Baked Marinated Tofu",
+          "aliases": [
+            "Baked Marinated Tofu",
+            "Marinated Tofu",
+            "Tofu"
+          ],
+          "deltas": {
+            "calories": 210,
+            "proteinG": 15,
+            "carbsG": 9,
+            "fatG": 14,
+            "sodiumMg": 770,
+            "sugarG": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "golden-state-cobb-wrap",
+      "canonicalName": "Golden State Cobb Wrap",
+      "aliases": [],
+      "calories": 1170,
+      "proteinG": 35,
+      "carbsG": 85,
+      "fatG": 78,
+      "sodiumMg": 2100,
+      "sugarG": 7,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "19.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "710"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "21"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "240"
+        }
+      ]
+    },
+    {
+      "id": "grilled-cheddar-cheese-sandwich",
+      "canonicalName": "Grilled Cheddar Cheese Sandwich",
+      "aliases": [],
+      "calories": 610,
+      "proteinG": 22,
+      "carbsG": 43,
+      "fatG": 39,
+      "sodiumMg": 650,
+      "sugarG": 8,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "5.4 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "360"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "21"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "130"
+        }
+      ]
+    },
+    {
+      "id": "peanut-butter-jelly",
+      "canonicalName": "Peanut Butter & Jelly",
+      "aliases": [],
+      "calories": 520,
+      "proteinG": 14,
+      "carbsG": 69,
+      "fatG": 23,
+      "sodiumMg": 410,
+      "sugarG": 24,
+      "fiberG": 5,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "210"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "40"
+        }
+      ]
+    },
+    {
+      "id": "turkey-cheddar-sandwich",
+      "canonicalName": "Turkey & Cheddar Sandwich",
+      "aliases": [],
+      "calories": 540,
+      "proteinG": 26,
+      "carbsG": 43,
+      "fatG": 30,
+      "sodiumMg": 740,
+      "sugarG": 8,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "270"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "14"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "125"
+        }
+      ]
+    },
+    {
+      "id": "crispy-chicken-tenders",
+      "canonicalName": "Crispy Chicken Tenders",
+      "aliases": [],
+      "calories": 320,
+      "proteinG": 30,
+      "carbsG": 18,
+      "fatG": 14,
+      "sodiumMg": 670,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "130"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "organic-ketchup",
+      "canonicalName": "Organic Ketchup",
+      "aliases": [],
+      "calories": 35,
+      "proteinG": 0,
+      "carbsG": 8,
+      "fatG": 0,
+      "sodiumMg": 320,
+      "sugarG": 7,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "1.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "kids-vegan-ranch-dressing",
+      "canonicalName": "Kids Vegan Ranch Dressing",
+      "aliases": [],
+      "calories": 120,
+      "proteinG": 0,
+      "carbsG": 0,
+      "fatG": 13,
+      "sodiumMg": 120,
+      "sugarG": 0,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "1.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "120"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Carbohydrates (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "apples",
+      "canonicalName": "Apples",
+      "aliases": [],
+      "calories": 35,
+      "proteinG": 0,
+      "carbsG": 8,
+      "fatG": 0,
+      "sodiumMg": 0,
+      "sugarG": 5,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "baja-green-goddess-dressing",
+      "canonicalName": "Baja Green Goddess Dressing",
+      "aliases": [],
+      "calories": 190,
+      "proteinG": 0,
+      "carbsG": 4,
+      "fatG": 19,
+      "sodiumMg": 450,
+      "sugarG": 3,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "170"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "15"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "basil-pesto-balsamic-vinaigrette",
+      "canonicalName": "Basil Pesto-Balsamic Vinaigrette",
+      "aliases": [],
+      "calories": 110,
+      "proteinG": 1,
+      "carbsG": 3,
+      "fatG": 10,
+      "sodiumMg": 140,
+      "sugarG": 2,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "1 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "90"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "chipotle-vinaigrette",
+      "canonicalName": "Chipotle Vinaigrette",
+      "aliases": [],
+      "calories": 280,
+      "proteinG": 0,
+      "carbsG": 6,
+      "fatG": 29,
+      "sodiumMg": 520,
+      "sugarG": 5,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "260"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Fiber (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "ginger-ponzu-dressing",
+      "canonicalName": "Ginger Ponzu Dressing",
+      "aliases": [],
+      "calories": 250,
+      "proteinG": 0,
+      "carbsG": 8,
+      "fatG": 25,
+      "sodiumMg": 600,
+      "sugarG": 7,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "classic-caesar-dressing",
+      "canonicalName": "Classic Caesar Dressing",
+      "aliases": [],
+      "calories": 340,
+      "proteinG": 4,
+      "carbsG": 4,
+      "fatG": 34,
+      "sodiumMg": 420,
+      "sugarG": 2,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "310"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "4"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "110"
+        }
+      ]
+    },
+    {
+      "id": "farmhouse-vinaigrette",
+      "canonicalName": "Farmhouse Vinaigrette",
+      "aliases": [],
+      "calories": 280,
+      "proteinG": 0,
+      "carbsG": 9,
+      "fatG": 28,
+      "sodiumMg": 330,
+      "sugarG": 7,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "250"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "herb-buttermilk-ranch",
+      "canonicalName": "Herb Buttermilk Ranch",
+      "aliases": [],
+      "calories": 180,
+      "proteinG": 0,
+      "carbsG": 5,
+      "fatG": 17,
+      "sodiumMg": 670,
+      "sugarG": 3,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "160"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "20"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "jalape-o-salsa-verde",
+      "canonicalName": "Jalapeño Salsa Verde",
+      "aliases": [],
+      "calories": 25,
+      "proteinG": 0,
+      "carbsG": 3,
+      "fatG": 2,
+      "sodiumMg": 170,
+      "sugarG": 2,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "15"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Fiber (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "miso-mustard-sesame-dressing",
+      "canonicalName": "Miso Mustard Sesame Dressing",
+      "aliases": [],
+      "calories": 220,
+      "proteinG": 1,
+      "carbsG": 13,
+      "fatG": 18,
+      "sodiumMg": 650,
+      "sugarG": 10,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "160"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "mustard-shallot-vinaigrette",
+      "canonicalName": "Mustard Shallot Vinaigrette",
+      "aliases": [],
+      "calories": 240,
+      "proteinG": 0,
+      "carbsG": 6,
+      "fatG": 24,
+      "sodiumMg": 200,
+      "sugarG": 3,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "rustic-red-wine-vinaigrette",
+      "canonicalName": "Rustic Red Wine Vinaigrette",
+      "aliases": [],
+      "calories": 300,
+      "proteinG": 0,
+      "carbsG": 3,
+      "fatG": 32,
+      "sodiumMg": 550,
+      "sugarG": 2,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "290"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "pomodoro-sauce",
+      "canonicalName": "Pomodoro Sauce",
+      "aliases": [],
+      "calories": 60,
+      "proteinG": 0,
+      "carbsG": 6,
+      "fatG": 3.5,
+      "sodiumMg": 340,
+      "sugarG": 4,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "35"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "tangy-bbq-sauce",
+      "canonicalName": "Tangy BBQ Sauce",
+      "aliases": [],
+      "calories": 50,
+      "proteinG": 0,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 540,
+      "sugarG": 12,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "thai-almond-dressing",
+      "canonicalName": "Thai Almond Dressing",
+      "aliases": [],
+      "calories": 200,
+      "proteinG": 1,
+      "carbsG": 15,
+      "fatG": 16,
+      "sodiumMg": 750,
+      "sugarG": 14,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "140"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Fiber (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "vegan-ranch",
+      "canonicalName": "Vegan Ranch",
+      "aliases": [],
+      "calories": 250,
+      "proteinG": 0,
+      "carbsG": 2,
+      "fatG": 26,
+      "sodiumMg": 240,
+      "sugarG": 0,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2 fl oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "240"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "ciabatta",
+      "canonicalName": "Ciabatta",
+      "aliases": [],
+      "calories": 260,
+      "proteinG": 7,
+      "carbsG": 47,
+      "fatG": 3.5,
+      "sodiumMg": 160,
+      "sugarG": 0,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "3.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "35"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "cornmeal-brioche",
+      "canonicalName": "Cornmeal Brioche",
+      "aliases": [],
+      "calories": 270,
+      "proteinG": 7,
+      "carbsG": 43,
+      "fatG": 7,
+      "sodiumMg": 430,
+      "sugarG": 9,
+      "fiberG": 1,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "1 roll"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "70"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "40"
+        }
+      ]
+    },
+    {
+      "id": "gluten-free-bread",
+      "canonicalName": "Gluten Free Bread",
+      "aliases": [],
+      "calories": 420,
+      "proteinG": 6,
+      "carbsG": 62,
+      "fatG": 18,
+      "sodiumMg": 920,
+      "sugarG": 8,
+      "fiberG": 6,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "5.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "170"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "mom-s-seeded-whole-wheat",
+      "canonicalName": "Mom's Seeded Whole Wheat",
+      "aliases": [],
+      "calories": 320,
+      "proteinG": 8,
+      "carbsG": 58,
+      "fatG": 6,
+      "sodiumMg": 400,
+      "sugarG": 4,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "60"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "mejorado-vegan-tortilla",
+      "canonicalName": "Mejorado Vegan Tortilla",
+      "aliases": [],
+      "calories": 460,
+      "proteinG": 9,
+      "carbsG": 64,
+      "fatG": 18,
+      "sodiumMg": 710,
+      "sugarG": 0,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "1 wrap"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "170"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "8"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "potato-brioche-hoagie",
+      "canonicalName": "Potato Brioche Hoagie",
+      "aliases": [],
+      "calories": 240,
+      "proteinG": 8,
+      "carbsG": 38,
+      "fatG": 6,
+      "sodiumMg": 500,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "2.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "60"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "id": "sesame-roll",
+      "canonicalName": "Sesame Roll",
+      "aliases": [],
+      "calories": 300,
+      "proteinG": 8,
+      "carbsG": 54,
+      "fatG": 5,
+      "sodiumMg": 640,
+      "sugarG": 1,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "45"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "sourdough",
+      "canonicalName": "Sourdough",
+      "aliases": [],
+      "calories": 300,
+      "proteinG": 10,
+      "carbsG": 62,
+      "fatG": 2,
+      "sodiumMg": 600,
+      "sugarG": 2,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "20"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "southern-potato-salad-small",
+      "canonicalName": "Southern Potato Salad (Small)",
+      "aliases": [],
+      "calories": 260,
+      "proteinG": 2,
+      "carbsG": 22,
+      "fatG": 17,
+      "sodiumMg": 400,
+      "sugarG": 2,
+      "fiberG": 1,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "160"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "southern-potato-salad-medium",
+      "canonicalName": "Southern Potato Salad (Medium)",
+      "aliases": [],
+      "calories": 530,
+      "proteinG": 4,
+      "carbsG": 44,
+      "fatG": 33,
+      "sodiumMg": 790,
+      "sugarG": 4,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "330"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "southern-potato-salad-large",
+      "canonicalName": "Southern Potato Salad (Large)",
+      "aliases": [],
+      "calories": 1050,
+      "proteinG": 7,
+      "carbsG": 87,
+      "fatG": 67,
+      "sodiumMg": 1590,
+      "sugarG": 8,
+      "fiberG": 6,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "18 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "660"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "basil-pesto-shells-small",
+      "canonicalName": "Basil Pesto Shells (Small)",
+      "aliases": [],
+      "calories": 270,
+      "proteinG": 8,
+      "carbsG": 24,
+      "fatG": 15,
+      "sodiumMg": 650,
+      "sugarG": 2,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "3.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "140"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "id": "basil-pesto-shells-medium",
+      "canonicalName": "Basil Pesto Shells (Medium)",
+      "aliases": [],
+      "calories": 540,
+      "proteinG": 16,
+      "carbsG": 48,
+      "fatG": 30,
+      "sodiumMg": 1300,
+      "sugarG": 4,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "280"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "7"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "30"
+        }
+      ]
+    },
+    {
+      "id": "basil-pesto-shells-large",
+      "canonicalName": "Basil Pesto Shells (Large)",
+      "aliases": [],
+      "calories": 1070,
+      "proteinG": 33,
+      "carbsG": 96,
+      "fatG": 59,
+      "sodiumMg": 2600,
+      "sugarG": 8,
+      "fiberG": 8,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "14 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "560"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "14"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "55"
+        }
+      ]
+    },
+    {
+      "id": "kale-apple-salad-small",
+      "canonicalName": "Kale & Apple Salad (Small)",
+      "aliases": [],
+      "calories": 250,
+      "proteinG": 1,
+      "carbsG": 17,
+      "fatG": 21,
+      "sodiumMg": 125,
+      "sugarG": 8,
+      "fiberG": 3,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "3.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "190"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "3.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "kale-apple-salad-medium",
+      "canonicalName": "Kale & Apple Salad (Medium)",
+      "aliases": [],
+      "calories": 510,
+      "proteinG": 2,
+      "carbsG": 35,
+      "fatG": 42,
+      "sodiumMg": 250,
+      "sugarG": 16,
+      "fiberG": 6,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "7 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "380"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "7"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "kale-apple-salad-large",
+      "canonicalName": "Kale & Apple Salad (Large)",
+      "aliases": [],
+      "calories": 1020,
+      "proteinG": 5,
+      "carbsG": 69,
+      "fatG": 85,
+      "sodiumMg": 500,
+      "sugarG": 31,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "14 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "770"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "15"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "curried-couscous-small",
+      "canonicalName": "Curried Couscous (Small)",
+      "aliases": [],
+      "calories": 290,
+      "proteinG": 2,
+      "carbsG": 25,
+      "fatG": 18,
+      "sodiumMg": 600,
+      "sugarG": 7,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "180"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "curried-couscous-medium",
+      "canonicalName": "Curried Couscous (Medium)",
+      "aliases": [],
+      "calories": 580,
+      "proteinG": 4,
+      "carbsG": 49,
+      "fatG": 36,
+      "sodiumMg": 1210,
+      "sugarG": 13,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "9 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "360"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "curried-couscous-large",
+      "canonicalName": "Curried Couscous (Large)",
+      "aliases": [],
+      "calories": 1160,
+      "proteinG": 9,
+      "carbsG": 98,
+      "fatG": 72,
+      "sodiumMg": 2420,
+      "sugarG": 27,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "18 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "720"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "greek-lemon-chicken-farro-soup-cup",
+      "canonicalName": "Greek Lemon Chicken & Farro Soup (Cup)",
+      "aliases": [],
+      "calories": 180,
+      "proteinG": 4,
+      "carbsG": 16,
+      "fatG": 12,
+      "sodiumMg": 1040,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "110"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "7"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "id": "greek-lemon-chicken-farro-soup-bowl",
+      "canonicalName": "Greek Lemon Chicken & Farro Soup (Bowl)",
+      "aliases": [],
+      "calories": 360,
+      "proteinG": 8,
+      "carbsG": 32,
+      "fatG": 24,
+      "sodiumMg": 2070,
+      "sugarG": 6,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "14"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "70"
+        }
+      ]
+    },
+    {
+      "id": "tomato-basil-soup-cup",
+      "canonicalName": "Tomato Basil Soup (Cup)",
+      "aliases": [],
+      "calories": 270,
+      "proteinG": 3,
+      "carbsG": 20,
+      "fatG": 20,
+      "sodiumMg": 640,
+      "sugarG": 12,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "180"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "12"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "70"
+        }
+      ]
+    },
+    {
+      "id": "tomato-basil-soup-bowl",
+      "canonicalName": "Tomato Basil Soup (Bowl)",
+      "aliases": [],
+      "calories": 540,
+      "proteinG": 6,
+      "carbsG": 40,
+      "fatG": 40,
+      "sodiumMg": 1280,
+      "sugarG": 24,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "360"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "24"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "140"
+        }
+      ]
+    },
+    {
+      "id": "iced-tea-16-oz",
+      "canonicalName": "Iced Tea (16 oz)",
+      "aliases": [
+        "Iced Tea - 16oz"
+      ],
+      "calories": 5,
+      "proteinG": 0,
+      "carbsG": 1,
+      "fatG": 0,
+      "sodiumMg": 15,
+      "sugarG": 0,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "iced-tea-20-oz",
+      "canonicalName": "Iced Tea (20 oz)",
+      "aliases": [
+        "Iced Tea - 20oz"
+      ],
+      "calories": 5,
+      "proteinG": 0,
+      "carbsG": 2,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 0,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "20 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "lemonade-16-oz",
+      "canonicalName": "Lemonade (16 oz)",
+      "aliases": [
+        "Lemonade - 16oz"
+      ],
+      "calories": 260,
+      "proteinG": 0,
+      "carbsG": 65,
+      "fatG": 0,
+      "sodiumMg": 30,
+      "sugarG": 58,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "lemonade-20-oz",
+      "canonicalName": "Lemonade (20 oz)",
+      "aliases": [
+        "Lemonade - 20oz"
+      ],
+      "calories": 320,
+      "proteinG": 0,
+      "carbsG": 82,
+      "fatG": 0,
+      "sodiumMg": 40,
+      "sugarG": 73,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "20 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "guava-lemonade-16-oz",
+      "canonicalName": "Guava Lemonade (16 oz)",
+      "aliases": [
+        "Guava Lemonade - 16oz"
+      ],
+      "calories": 350,
+      "proteinG": 0,
+      "carbsG": 87,
+      "fatG": 1,
+      "sodiumMg": 30,
+      "sugarG": 71,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "10"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Protein (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "guava-lemonade-20-oz",
+      "canonicalName": "Guava Lemonade (20 oz)",
+      "aliases": [
+        "Guava Lemonade - 20oz"
+      ],
+      "calories": 440,
+      "proteinG": 1,
+      "carbsG": 109,
+      "fatG": 1,
+      "sodiumMg": 35,
+      "sugarG": 89,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "20 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "10"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "get-your-greens-16-oz",
+      "canonicalName": "Get Your Greens (16 oz)",
+      "aliases": [
+        "Get Your Greens - 16oz"
+      ],
+      "calories": 190,
+      "proteinG": 2,
+      "carbsG": 48,
+      "fatG": 0,
+      "sodiumMg": 35,
+      "sugarG": 43,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "5"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        },
+        {
+          "label": "Fiber (g) as published",
+          "value": "< 1g"
+        }
+      ]
+    },
+    {
+      "id": "get-your-greens-20-oz",
+      "canonicalName": "Get Your Greens (20 oz)",
+      "aliases": [
+        "Get Your Greens - 20oz"
+      ],
+      "calories": 240,
+      "proteinG": 3,
+      "carbsG": 60,
+      "fatG": 0.5,
+      "sodiumMg": 40,
+      "sugarG": 53,
+      "fiberG": 1,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "20 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "5"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "pomegranate-mint-lemonade-16-oz",
+      "canonicalName": "Pomegranate Mint Lemonade (16 oz)",
+      "aliases": [
+        "Pomegranate Mint Lemonade - 16oz"
+      ],
+      "calories": 260,
+      "proteinG": 0,
+      "carbsG": 65,
+      "fatG": 0,
+      "sodiumMg": 35,
+      "sugarG": 58,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "pomegranate-mint-lemonade-20-oz",
+      "canonicalName": "Pomegranate Mint Lemonade (20 oz)",
+      "aliases": [
+        "Pomegranate Mint Lemonade - 20oz"
+      ],
+      "calories": 320,
+      "proteinG": 0,
+      "carbsG": 81,
+      "fatG": 0,
+      "sodiumMg": 40,
+      "sugarG": 73,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "20 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "organic-valley-milk",
+      "canonicalName": "Organic Valley Milk",
+      "aliases": [],
+      "calories": 90,
+      "proteinG": 7,
+      "carbsG": 10,
+      "fatG": 2,
+      "sodiumMg": 105,
+      "sugarG": 10,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.75 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "20"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "1.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "10"
+        }
       ]
     }
   ]
