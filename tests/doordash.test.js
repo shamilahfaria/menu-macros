@@ -2,7 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { JSDOM } from "jsdom";
 import {
+  findDetailItemName,
   findMenuItemNodes,
+  findModifierNodes,
   getStoreHaystack,
   isItemDetailPage,
 } from "../extension/content/doordash.js";
@@ -93,4 +95,76 @@ test("isItemDetailPage detects an open item-customization dialog", () => {
 
   const noModal = docFrom(`<main><h1>Mendocino Farms</h1></main>`);
   assert.equal(isItemDetailPage(noModal), false);
+});
+
+test("findDetailItemName reads the heading inside an open item-detail dialog", () => {
+  const doc = docFrom(`
+    <div role="dialog">
+      <h1>The Farm Club</h1>
+      <button>Add to order</button>
+    </div>
+  `);
+  assert.equal(findDetailItemName(doc), "The Farm Club");
+});
+
+test("findDetailItemName falls back to data-testid/class heuristics without h1/h2", () => {
+  const doc = docFrom(`
+    <div role="dialog">
+      <span data-testid="ItemName">Avocado & Quinoa Superfood Ensalada</span>
+      <button>Add to order</button>
+    </div>
+  `);
+  assert.equal(findDetailItemName(doc), "Avocado & Quinoa Superfood Ensalada");
+});
+
+test("findDetailItemName returns null when no name element is found", () => {
+  const doc = docFrom(`<div role="dialog"><button>Add to order</button></div>`);
+  assert.equal(findDetailItemName(doc), null);
+  assert.equal(findDetailItemName({ querySelector() { throw new Error("boom"); } }), null);
+});
+
+test("findModifierNodes reads option rows via data-testid/class heuristics", () => {
+  const doc = docFrom(`
+    <div role="dialog">
+      <h1>The Farm Club</h1>
+      <div data-testid="ModifierOptionRow">
+        <span data-testid="label">Add Chicken</span>
+        <span>+$1.50</span>
+      </div>
+      <div data-testid="ModifierOptionRow">
+        <span data-testid="label">Add Avocado</span>
+        <span>+$1.75</span>
+      </div>
+    </div>
+  `);
+
+  const nodes = findModifierNodes(doc);
+  assert.equal(nodes.length, 2);
+  assert.equal(nodes[0].name, "Add Chicken");
+  assert.equal(nodes[1].name, "Add Avocado");
+  assert.equal(nodes[0].mountEl.tagName, "DIV");
+});
+
+test("findModifierNodes falls back to checkbox/radio labels when no row selectors match", () => {
+  const doc = docFrom(`
+    <div role="dialog">
+      <h1>The Farm Club</h1>
+      <label><input type="checkbox" /><span>Add Chicken</span> <span>+$1.50</span></label>
+      <label><input type="radio" /><span>No dressing</span></label>
+    </div>
+  `);
+
+  const nodes = findModifierNodes(doc);
+  assert.equal(nodes.length, 2);
+  assert.equal(nodes[0].name, "Add Chicken");
+  assert.equal(nodes[1].name, "No dressing");
+});
+
+test("findModifierNodes skips rows without a usable name and never throws", () => {
+  const emptyRow = docFrom(`
+    <div role="dialog"><div data-testid="ModifierOptionRow"><span></span></div></div>
+  `);
+  assert.deepEqual(findModifierNodes(emptyRow), []);
+
+  assert.deepEqual(findModifierNodes({ querySelector() { throw new Error("boom"); } }), []);
 });

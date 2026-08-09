@@ -103,3 +103,92 @@ export function isItemDetailPage(doc = document) {
     return false;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Task 7 (2026-08-08): item detail + modifier discovery. Same blocker as
+// above — no live DoorDash session was reachable, so these selectors are
+// defensive heuristics (not live-verified) using the same fallback strategy
+// as `findMenuItemNodes`: prefer stable `data-anchor-id`/`data-testid`
+// substrings, fall back to hashed-class substrings, and finally fall back to
+// generic DOM shape (headings for the name; checkbox/radio `<label>`s for
+// modifier options). Re-verify against a live item-detail modal and update
+// this comment; see docs/manual-qa.md.
+// ---------------------------------------------------------------------------
+
+function findModalRoot(doc) {
+  return safeQuery(doc, '[role="dialog"], [aria-modal="true"]') || doc;
+}
+
+function detailNameCandidates(scope) {
+  return [
+    ...safeQueryAll(scope, "h1, h2"),
+    ...safeQueryAll(scope, "[data-testid*='ItemName'], [data-testid*='itemName']"),
+    ...safeQueryAll(scope, "[class*='ItemName'], [class*='itemName']"),
+  ];
+}
+
+export function findDetailNameEl(doc = document) {
+  try {
+    const scope = findModalRoot(doc);
+    for (const el of detailNameCandidates(scope)) {
+      if (textOf(el).length >= 2) return el;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+export function findDetailItemName(doc = document) {
+  const el = findDetailNameEl(doc);
+  return el ? textOf(el) : null;
+}
+
+const MODIFIER_ROW_SELECTORS = [
+  '[data-anchor-id*="OptionRow"], [data-anchor-id*="Option"]',
+  "[data-testid*='OptionRow'], [data-testid*='ModifierOption'], [data-testid*='Option']",
+  "[class*='OptionRow'], [class*='ModifierOption'], [class*='OptionItem']",
+];
+
+function checkboxLabelRoots(scope) {
+  return safeQueryAll(scope, "label").filter((label) =>
+    safeQuery(label, 'input[type="checkbox"], input[type="radio"]'));
+}
+
+function modifierRowRoots(scope) {
+  for (const selector of MODIFIER_ROW_SELECTORS) {
+    const found = safeQueryAll(scope, selector);
+    if (found.length) return found;
+  }
+  return checkboxLabelRoots(scope);
+}
+
+function findModifierNameEl(root) {
+  return (
+    safeQuery(root, "[data-testid*='label'], [data-testid*='Label']")
+    || safeQuery(root, "[class*='OptionName'], [class*='Label'], [class*='label']")
+    || safeQuery(root, "span")
+  );
+}
+
+function stripTrailingPrice(text) {
+  return text.replace(/\+?\s?\$\s?\d+(\.\d+)?\s*$/, "").trim();
+}
+
+export function findModifierNodes(doc = document) {
+  const nodes = [];
+  try {
+    const scope = findModalRoot(doc);
+    for (const root of modifierRowRoots(scope)) {
+      const nameEl = findModifierNameEl(root);
+      const name = stripTrailingPrice(textOf(nameEl));
+      if (!name || name.length < 2) continue;
+
+      const mountEl = nameEl.parentElement || root;
+      nodes.push({ root, name, mountEl });
+    }
+  } catch {
+    return [];
+  }
+  return nodes;
+}
