@@ -12,10 +12,38 @@ import { createNutritionStrip, createModifierDelta } from "./ui.js";
 
 const MARK = "data-mm-painted";
 const DETAIL_STRIP_MARK = "data-mm-detail-strip";
+const PAINT_DEBOUNCE_MS = 150;
+
+// Cached for the lifetime of the page so repeated MutationObserver passes
+// don't re-fetch/re-validate chrome.storage on every DOM tick. Only
+// refetched when the store haystack text changes (e.g. a SPA navigation to
+// a different store without a full page reload).
+let cachedPacks = null;
+let cachedHaystack = null;
+
+async function getActivePack() {
+  const haystack = getStoreHaystack();
+  if (!cachedPacks || cachedHaystack !== haystack) {
+    cachedPacks = await getPacks();
+    cachedHaystack = haystack;
+  }
+  return findPackForStore(cachedPacks, haystack);
+}
+
+// Some DoorDash layouts nest the name element directly under the card
+// root, in which case mountEl === root and inserting "afterend" would
+// place the strip as a sibling of the card (outside it) instead of inside.
+// Falling back to appending into root keeps the strip contained.
+function mountStrip(root, mountEl, strip) {
+  if (mountEl && mountEl !== root && mountEl.parentElement) {
+    mountEl.insertAdjacentElement("afterend", strip);
+  } else {
+    root.appendChild(strip);
+  }
+}
 
 async function paintList() {
-  const packs = await getPacks();
-  const pack = findPackForStore(packs, getStoreHaystack());
+  const pack = await getActivePack();
   if (!pack) return;
 
   for (const node of findMenuItemNodes()) {
@@ -23,7 +51,7 @@ async function paintList() {
     const item = matchItem(node.name, pack.items);
     const priceText = node.priceEl?.textContent?.trim() || "";
     const strip = createNutritionStrip({ item, priceText });
-    node.mountEl.insertAdjacentElement("afterend", strip);
+    mountStrip(node.root, node.mountEl, strip);
     node.root.setAttribute(MARK, "1");
   }
 }
@@ -69,8 +97,7 @@ export function paintModifierDeltas(modifierNodes, item) {
 }
 
 async function paintDetail() {
-  const packs = await getPacks();
-  const pack = findPackForStore(packs, getStoreHaystack());
+  const pack = await getActivePack();
   if (!pack) return;
 
   const nameEl = findDetailNameEl();
@@ -85,12 +112,49 @@ async function paintDetail() {
   paintModifierDeltas(findModifierNodes(), item);
 }
 
+// Serializes paint passes so a mutation firing mid-paint queues a follow-up
+// run instead of starting a second concurrent pass — an overlapping pass
+// could observe unmarked nodes before the in-flight one finishes marking
+// them, producing duplicate strips.
+function createPaintScheduler(paint) {
+  let inFlight = null;
+  let queued = false;
+
+  function run() {
+    if (inFlight) {
+      queued = true;
+      return;
+    }
+    inFlight = paint()
+      .catch(() => {})
+      .finally(() => {
+        inFlight = null;
+        if (queued) {
+          queued = false;
+          run();
+        }
+      });
+  }
+
+  return run;
+}
+
+function debounce(fn, ms) {
+  let timer = null;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(fn, ms);
+  };
+}
+
 async function boot() {
   const paint = () => (isItemDetailPage() ? paintDetail() : paintList());
-  await paint().catch(() => {});
-  const obs = new MutationObserver(() => {
-    paint().catch(() => {});
-  });
+  const schedulePaint = createPaintScheduler(paint);
+
+  schedulePaint();
+
+  const debouncedPaint = debounce(schedulePaint, PAINT_DEBOUNCE_MS);
+  const obs = new MutationObserver(() => debouncedPaint());
   obs.observe(document.documentElement, { childList: true, subtree: true });
 }
 
