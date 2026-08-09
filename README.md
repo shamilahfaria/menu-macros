@@ -22,12 +22,14 @@ Manual acceptance checklist: [`docs/manual-qa.md`](docs/manual-qa.md)
 
 ## Load unpacked (dev)
 
-1. Clone this repo and run `npm test` to confirm the suite passes.
-2. Open `chrome://extensions` in Chrome.
-3. Enable **Developer mode** (top right).
-4. Click **Load unpacked** and select the **`extension/`** folder (not the repo root).
-5. Pin the extension if you like; open a Mendocino Farms store on DoorDash and confirm strips appear on menu cards.
-6. In the extension details page, verify the service worker is active and the content script is listed for `https://www.doordash.com/*`.
+1. Clone this repo, run `npm install`, then `npm test` to confirm the suite passes.
+2. Run `npm run build`. Chrome's Manifest V3 content scripts can't use `"type": "module"`, so this bundles the ES-module source at `extension/content/content.js` into a plain script, `extension/content/content.bundle.js` (git-ignored, generated), which is what the manifest actually loads. The background service worker still runs from source (`extension/background.js`) since MV3 service workers do support `type: "module"`.
+3. Open `chrome://extensions` in Chrome.
+4. Enable **Developer mode** (top right).
+5. Click **Load unpacked** and select the **`extension/`** folder (not the repo root).
+6. Pin the extension if you like; open a Mendocino Farms store on DoorDash and confirm strips appear on menu cards.
+7. In the extension details page, verify the service worker is active and the content script is listed for `https://www.doordash.com/*`.
+8. After editing anything under `extension/content/` or `extension/lib/`, re-run `npm run build` and click the reload icon for the extension on `chrome://extensions`.
 
 To update the bundled nutrition pack after editing `packs/mendocino-farms.json`, run `npm run sync-pack` before reloading the extension.
 
@@ -53,6 +55,7 @@ The curated JSON pack lives at `extension/packs/mendocino-farms.json` (bundled f
 ## Development
 
 ```bash
-npm test          # unit tests (matcher, UI, DOM adapters, background, pack)
+npm test          # unit tests (matcher, UI, DOM adapters, background, pack) — runs against source modules, no build needed
+npm run build     # bundle extension/content/content.js → extension/content/content.bundle.js (required to load/reload the extension)
 npm run sync-pack # copy packs/*.json → extension/packs/ after validation
 ```
