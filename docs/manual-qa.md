@@ -1,5 +1,33 @@
 # Manual QA
 
+MVP acceptance checklist from the spec test plan.
+
+**Environment note (Task 11):** Live DoorDash QA was **not** run in this session. `doordash.com` is unreachable from the agent environment (no usable browser tab; direct fetch times out). Every item below that depends on a real DoorDash page stays **unchecked** until someone loads the unpacked extension on `doordash.com` in Chrome. Where automated tests give partial confidence, that is called out — it does **not** count as checked.
+
+Run `npm test` before manual QA (currently **50/50** passing).
+
+## Spec checklist
+
+- [ ] **Mendocino store: matched macros align in 3×2 grid** — needs live Mendocino Farms DoorDash store page; confirm price left / calories right and six macro cells (Protein, Carbs, Fat, Sodium, Sugar, Fiber) line up across cards.
+- [ ] **Unknown item: em dashes + "Nutrition unavailable"** — needs live page with an item the pack does not match. Partial: `tests/ui.test.js` and `tests/content.test.js` assert seven `—` cells and the footer text in isolated DOM.
+- [ ] **🔍 appears only when extras exist; hover lists dynamic extras** — needs live page to confirm hover popover. Partial: `tests/ui.test.js` asserts magnifier hidden when `extras[]` is empty and present when extras exist.
+- [ ] **Scroll / category change still paints new cards** — needs live DoorDash with infinite scroll or category tabs. Partial: `content.js` uses a `MutationObserver` and `data-mm-painted` guard (see Task 6 notes below).
+- [ ] **Item detail: base + modifier deltas** — needs live item-customization modal. Partial: `tests/doordash.test.js` + `tests/ui.test.js` cover detail/modifier DOM heuristics and delta formatting (see Task 7 notes below).
+- [ ] **Non-Mendocino DoorDash store: no overlay** — needs live page for a store without a pack (e.g. Chipotle). Partial: `content.js` returns early when `findPackForStore` misses.
+- [ ] **Offline / blocked refresh: last pack still renders; no toast** — needs loaded extension: block `raw.githubusercontent.com`, confirm strips still paint from bundled/storage pack and no notification/toast appears. Partial: `tests/background.test.js` asserts failed refresh keeps prior packs and records failure meta only; extension source has no notification/badge/toast APIs.
+- [ ] **Popup opens only on click; refresh updates meta quietly** — needs loaded extension: toolbar click opens popup; Refresh updates timestamp/status without auto-opening or page toast. Partial: no `openPopup`/notification paths in `extension/`; `MM_REFRESH` contract covered in `tests/background.test.js`.
+
+## How to run manual QA
+
+1. `npm test` — confirm green.
+2. Load unpacked from `extension/` (see README).
+3. Open a Mendocino Farms store on `https://www.doordash.com/`.
+4. Walk the spec checklist top to bottom; check boxes only for what you observe on the live page.
+5. Repeat on a non-Mendocino DoorDash store for the no-overlay item.
+6. Optional: DevTools → Network → block the GitHub raw URL; reload and confirm strips still render.
+
+---
+
 ## Task 6 — DoorDash DOM adapter + menu list injection (2026-08-08)
 
 **Status: blocked on live verification.** Neither the in-IDE browser tooling
