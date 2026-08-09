@@ -1,0 +1,75 @@
+{
+  "id": "mendocino-farms",
+  "displayName": "Mendocino Farms",
+  "version": 1,
+  "matchHints": ["mendocino farms", "mendocino-farms"],
+  "source": {
+    "url": "https://contact.mendocinofarms.com/wp-content/uploads/2026/02/Feb2026_NutritionalAllergen.pdf",
+    "label": "Mendocino Farms Nutritional & Allergen PDF (Feb 2026)"
+  },
+  "updatedAt": "2026-02-01",
+  "remoteUrl": "https://raw.githubusercontent.com/shamilahfaria/menu-macros/main/packs/mendocino-farms.json",
+  "items": [
+    {
+      "id": "the-farm-club",
+      "canonicalName": "The Farm Club",
+      "aliases": ["Farm Club", "The Farm Club Sandwich"],
+      "calories": 760,
+      "proteinG": 40,
+      "carbsG": 69,
+      "fatG": 34,
+      "sodiumMg": 1620,
+      "sugarG": 7,
+      "fiberG": 6,
+      "extras": [
+        { "label": "Calories from fat", "value": "320" },
+        { "label": "Saturated fat", "value": "8g" },
+        { "label": "Trans fat", "value": "0g" },
+        { "label": "Cholesterol", "value": "100mg" }
+      ],
+      "modifiers": [
+        {
+          "canonicalName": "Add Chicken",
+          "aliases": ["Chicken", "Add chicken"],
+          "deltas": { "calories": 110, "proteinG": 20, "fatG": 2.5, "sodiumMg": 500 }
+        }
+      ]
+    },
+    {
+      "id": "not-so-fried-chicken",
+      "canonicalName": "\"Not So Fried\" Chicken",
+      "aliases": ["Not So Fried Chicken", "Not So Fried Chicken Sandwich"],
+      "calories": 900,
+      "proteinG": 35,
+      "carbsG": 79,
+      "fatG": 48,
+      "sodiumMg": 1350,
+      "sugarG": 10,
+      "fiberG": 5,
+      "extras": [
+        { "label": "Calories from fat", "value": "450" },
+        { "label": "Saturated fat", "value": "6g" },
+        { "label": "Trans fat", "value": "0g" },
+        { "label": "Cholesterol", "value": "85mg" }
+      ]
+    },
+    {
+      "id": "avocado-quinoa-superfood-ensalada",
+      "canonicalName": "Avocado & Quinoa Superfood Ensalada",
+      "aliases": ["Avocado and Quinoa Superfood Ensalada", "Avocado Quinoa Salad"],
+      "calories": 690,
+      "proteinG": 19,
+      "carbsG": 47,
+      "fatG": 51,
+      "sodiumMg": 1090,
+      "sugarG": 10,
+      "fiberG": 15,
+      "extras": [
+        { "label": "Calories from fat", "value": "470" },
+        { "label": "Saturated fat", "value": "8g" },
+        { "label": "Trans fat", "value": "0g" },
+        { "label": "Cholesterol", "value": "20mg" }
+      ]
+    }
+  ]
+}
