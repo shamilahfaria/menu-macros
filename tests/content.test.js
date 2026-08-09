@@ -68,7 +68,7 @@ test("paintModifierDeltas leaves unmatched rows unmarked so a later hydration pa
   paintModifierDeltas([node], item);
   assert.equal(root.getAttribute("data-mm-painted"), "1", "row is marked only once a delta is painted");
   assert.equal(
-    mountEl.querySelector(".mm-modifier-delta")?.textContent,
+    mountEl.querySelector(".mm-modifier-delta")?.shadowRoot.querySelector("span").textContent,
     "+120 cal · +20g P",
   );
 
