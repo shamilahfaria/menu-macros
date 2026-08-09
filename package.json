@@ -10,6 +10,6 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "jsdom": "^30.0.1"
+    "jsdom": "27.0.1"
   }
 }
