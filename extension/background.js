@@ -8,6 +8,26 @@ import { validatePack } from "./lib/pack.js";
 
 const ALARM = "mm-pack-refresh";
 
+// Must match the raw.githubusercontent.com host_permissions entry in
+// manifest.json. A pack's remoteUrl is untrusted stored data (it can be
+// overwritten by a previous refresh), so it's re-validated here rather than
+// trusted just because it parsed as a URL.
+const ALLOWED_REMOTE_HOST = "raw.githubusercontent.com";
+const ALLOWED_REMOTE_PATH_PREFIX = "/shamilahfaria/menu-macros/";
+
+function isAllowedRemoteUrl(remoteUrl) {
+  try {
+    const url = new URL(remoteUrl);
+    return (
+      url.protocol === "https:"
+      && url.host === ALLOWED_REMOTE_HOST
+      && url.pathname.startsWith(ALLOWED_REMOTE_PATH_PREFIX)
+    );
+  } catch {
+    return false;
+  }
+}
+
 export async function refreshPacks({ reason: _reason } = { reason: "manual" }) {
   try {
     const current = await getPacks();
@@ -17,6 +37,9 @@ export async function refreshPacks({ reason: _reason } = { reason: "manual" }) {
       if (!pack.remoteUrl) {
         updated.push(pack);
         continue;
+      }
+      if (!isAllowedRemoteUrl(pack.remoteUrl)) {
+        throw new Error("remoteUrl host/path not allowed");
       }
 
       const response = await fetch(pack.remoteUrl, { cache: "no-store" });

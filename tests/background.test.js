@@ -103,6 +103,33 @@ test("failed refresh keeps the last good packs and records failure", async () =>
   assert.match(storage.meta.lastRefreshAttemptAt, /^\d{4}-\d{2}-\d{2}T/);
 });
 
+test("refreshPacks rejects a remoteUrl outside the trusted GitHub raw host/path and keeps last good packs", async () => {
+  const untrusted = { ...bundledPack, version: 2, remoteUrl: "https://evil.example.com/packs/mendocino-farms.json" };
+  const { refreshPacks, storage } = await loadBackground({ storedPack: untrusted });
+  const packsBefore = structuredClone(storage.packs);
+
+  const result = await refreshPacks({ reason: "manual" });
+
+  assert.deepEqual(result, { ok: false });
+  assert.deepEqual(storage.packs, packsBefore);
+  assert.equal(storage.meta.lastRefreshOk, false);
+});
+
+test("refreshPacks rejects a raw.githubusercontent.com URL outside the allowed repo path", async () => {
+  const untrusted = {
+    ...bundledPack,
+    version: 2,
+    remoteUrl: "https://raw.githubusercontent.com/someone-else/other-repo/main/packs/mendocino-farms.json",
+  };
+  const { refreshPacks, storage } = await loadBackground({ storedPack: untrusted });
+  const packsBefore = structuredClone(storage.packs);
+
+  const result = await refreshPacks({ reason: "manual" });
+
+  assert.deepEqual(result, { ok: false });
+  assert.deepEqual(storage.packs, packsBefore);
+});
+
 test("alarm refreshes only for the pack refresh alarm", async () => {
   const { listeners, storage } = await loadBackground();
 
