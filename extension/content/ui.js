@@ -236,12 +236,23 @@ export function createNutritionStrip({ item, priceText = "" } = {}) {
   return host;
 }
 
+const MODIFIER_DELTA_STYLES = `
+  :host {
+    color: #6b6b6b;
+    display: inline;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+  }
+`;
+
 export function createModifierDelta(modifier) {
   const text = formatDeltaText(modifier);
   if (!text) return null;
 
-  const delta = document.createElement("span");
-  delta.className = "mm-modifier-delta";
-  delta.textContent = text;
-  return delta;
+  const host = document.createElement("span");
+  host.className = "mm-modifier-delta";
+  const shadow = host.attachShadow({ mode: "open" });
+  shadow.innerHTML = `<style>${MODIFIER_DELTA_STYLES}</style><span>${escapeHtml(text)}</span>`;
+  return host;
 }

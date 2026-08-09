@@ -16,8 +16,10 @@ async function render() {
       : "Never";
     const ok = formatRefreshStatus(meta);
 
-    statusEl.innerHTML =
-      `<strong>${names}</strong><br>Last refresh: ${when}<br>Status: ${ok}`;
+    statusEl.replaceChildren();
+    const strong = document.createElement("strong");
+    strong.textContent = names;
+    statusEl.append(strong, document.createElement("br"), `Last refresh: ${when}`, document.createElement("br"), `Status: ${ok}`);
   } catch {
     statusEl.textContent = "Could not load status";
   }
