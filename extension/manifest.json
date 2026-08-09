@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "menu-macros",
+  "version": "0.1.0",
+  "description": "Inline nutrition macros on DoorDash for supported restaurants.",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://www.doordash.com/*",
+    "https://raw.githubusercontent.com/shamilahfaria/menu-macros/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "menu-macros",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.doordash.com/*"],
+      "js": ["content/content.js"],
+      "type": "module",
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["packs/*.json"],
+      "matches": ["https://www.doordash.com/*"]
+    }
+  ]
+}

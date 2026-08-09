@@ -1,0 +1,9 @@
+body {
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 12px;
+  min-width: 240px;
+  color: #191919;
+}
+button {
+  margin-top: 8px;
+}
