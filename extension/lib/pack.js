@@ -8,12 +8,17 @@ const REQUIRED_ITEM_NUMBERS = [
   "fiberG",
 ];
 
+function isNonEmptyStringArray(value) {
+  return Array.isArray(value)
+    && value.every((entry) => typeof entry === "string" && entry.trim().length > 0);
+}
+
 export function validatePack(pack) {
   if (!pack || typeof pack !== "object") return { ok: false, error: "pack must be object" };
   if (typeof pack.id !== "string" || !pack.id) return { ok: false, error: "id required" };
   if (typeof pack.displayName !== "string") return { ok: false, error: "displayName required" };
   if (!Number.isInteger(pack.version)) return { ok: false, error: "version int required" };
-  if (!Array.isArray(pack.matchHints) || pack.matchHints.length === 0) {
+  if (!isNonEmptyStringArray(pack.matchHints) || pack.matchHints.length === 0) {
     return { ok: false, error: "matchHints required" };
   }
   if (!pack.source || typeof pack.source.url !== "string") {
@@ -26,7 +31,9 @@ export function validatePack(pack) {
     if (typeof item.id !== "string" || typeof item.canonicalName !== "string") {
       return { ok: false, error: "item id/canonicalName required" };
     }
-    if (!Array.isArray(item.aliases)) return { ok: false, error: "aliases must be array" };
+    if (!isNonEmptyStringArray(item.aliases)) {
+      return { ok: false, error: "aliases must contain non-empty strings" };
+    }
     for (const key of REQUIRED_ITEM_NUMBERS) {
       if (typeof item[key] !== "number") return { ok: false, error: `item.${key} number required` };
     }
@@ -44,9 +51,14 @@ export function validatePack(pack) {
         if (typeof mod.canonicalName !== "string") {
           return { ok: false, error: "modifier.canonicalName required" };
         }
-        if (!Array.isArray(mod.aliases)) return { ok: false, error: "modifier.aliases required" };
-        if (!mod.deltas || typeof mod.deltas !== "object") {
+        if (!isNonEmptyStringArray(mod.aliases)) {
+          return { ok: false, error: "modifier.aliases must contain non-empty strings" };
+        }
+        if (!mod.deltas || typeof mod.deltas !== "object" || Array.isArray(mod.deltas)) {
           return { ok: false, error: "modifier.deltas required" };
+        }
+        if (!Object.values(mod.deltas).every(Number.isFinite)) {
+          return { ok: false, error: "modifier.deltas values must be finite numbers" };
         }
       }
     }
