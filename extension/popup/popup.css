@@ -4,6 +4,15 @@ body {
   min-width: 240px;
   color: #191919;
 }
+#status {
+  margin: 0;
+  line-height: 1.5;
+}
+
+#status strong {
+  font-weight: 600;
+}
+
 button {
   margin-top: 8px;
 }
