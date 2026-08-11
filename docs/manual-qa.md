@@ -1,217 +1,117 @@
 # Manual QA
 
-MVP acceptance checklist from the spec test plan.
+Live QA run **2026-08-11** against the Mendocino Farms Los Angeles store
+(`/store/mendocino-farms-los-angeles-5277/`) with the unpacked extension
+loaded in Chrome.
 
-**Environment note (Task 11):** Live DoorDash QA was **not** run in this session. `doordash.com` is unreachable from the agent environment (no usable browser tab; direct fetch times out). Every item below that depends on a real DoorDash page stays **unchecked** until someone loads the unpacked extension on `doordash.com` in Chrome. Where automated tests give partial confidence, that is called out — it does **not** count as checked.
+The previous revision of this file was entirely unchecked because that session
+had no browser access at all (`doordash.com` unreachable, no usable tab). That
+is no longer the case. Items below are checked only where they were observed
+on a live page, with the observation recorded.
 
-Run `npm test` before manual QA (currently **50/50** passing).
+Run `npm test` before manual QA (currently **69/69** passing).
 
 ## Spec checklist
 
-- [ ] **Mendocino store: matched macros align in 3×2 grid** — needs live Mendocino Farms DoorDash store page; confirm price left / calories right and six macro cells (Protein, Carbs, Fat, Sodium, Sugar, Fiber) line up across cards.
-- [ ] **Unknown item: em dashes + "Nutrition unavailable"** — needs live page with an item the pack does not match. Partial: `tests/ui.test.js` and `tests/content.test.js` assert seven `—` cells and the footer text in isolated DOM.
-- [ ] **🔍 appears only when extras exist; hover lists dynamic extras** — needs live page to confirm hover popover. Partial: `tests/ui.test.js` asserts magnifier hidden when `extras[]` is empty and present when extras exist.
-- [ ] **Scroll / category change still paints new cards** — needs live DoorDash with infinite scroll or category tabs. Partial: `content.js` uses a `MutationObserver` and `data-mm-painted` guard (see Task 6 notes below).
-- [ ] **Item detail: base + modifier deltas** — needs live item-customization modal. Partial: `tests/doordash.test.js` + `tests/ui.test.js` cover detail/modifier DOM heuristics and delta formatting (see Task 7 notes below).
-- [ ] **Non-Mendocino DoorDash store: no overlay** — needs live page for a store without a pack (e.g. Chipotle). Partial: `content.js` returns early when `findPackForStore` misses.
-- [ ] **Offline / blocked refresh: last pack still renders; no toast** — needs loaded extension: block `raw.githubusercontent.com`, confirm strips still paint from bundled/storage pack and no notification/toast appears. Partial: `tests/background.test.js` asserts failed refresh keeps prior packs and records failure meta only; extension source has no notification/badge/toast APIs.
-- [ ] **Popup opens only on click; refresh updates meta quietly** — needs loaded extension: toolbar click opens popup; Refresh updates timestamp/status without auto-opening or page toast. Partial: no `openPopup`/notification paths in `extension/`; `MM_REFRESH` contract covered in `tests/background.test.js`.
+- [x] **Matched item renders all seven macros, aligned** — band renders
+      `800 cal · P 42g · C 57g · F 42g` over `Sodium 1180mg · Sugar 5g ·
+      Fiber 4g` on the card photo. Verified on Chicken Pesto Caprese,
+      Chimichurri Steak & Bacon, The Farm Club, Avocado & Quinoa, "Not So
+      Fried" Chicken, The Modern Caesar, Turkey Avo Salsa Verde.
+- [x] **Unknown item shows "Nutrition unavailable"** — Joe's Classic Chips and
+      Spicy Curried Couscous render the quiet single-line variant. Coverage on
+      the visible menu was 7/11; all four misses (chips, couscous, two chef's
+      specials) are genuinely absent from the published PDF.
+- [x] **Scroll / recycle still paints cards** — after scrolling, every mounted
+      `[data-testid="MenuItem"]` still carries a band (`everyCardHasBand:
+      true`). DoorDash recycles a fixed set of ~6-12 mounted cards.
+- [x] **DoorDash's own layout is unaffected** — measured after injection:
+      cards 246-266px against DoorDash's 301px virtualized row pitch, **0
+      card overlaps**, price restored to its natural width (41px; it was
+      being squeezed to 0 by the previous in-flow strip), descriptions,
+      ratings and "#N Most liked" badges intact.
+- [x] **Non-Mendocino store: no overlay** — Chipotle Mexican Grill (Austin)
+      with 6 menu cards present: 0 strips, 0 injected styles, 0 mutated
+      nodes.
+- [x] **Item-detail modal is recognized** — `isItemDetailPage()` returns true
+      on a real Chicken Pesto Caprese modal (dialog role + "Add 1 item to
+      order"), and the heading resolves to "Chicken Pesto Caprese".
+- [x] **Weekly refresh source is reachable** — `raw.githubusercontent.com/…/
+      main/packs/mendocino-farms.json` returns 200 / 142 items
+      unauthenticated. It returned **404 for the entire life of the project**
+      until the repo was made public on 2026-08-11; every refresh silently
+      failed into the catch and kept the bundled pack.
+- [ ] **Modifier deltas render on a real modal** — the discovery and naming
+      bugs below are fixed and unit-tested, but the fix has not yet been
+      watched rendering on a live modal. **Needs an extension reload.**
+- [ ] **Coverage line appears in the console** — `[menu-macros] pack coverage
+      7/11` plus unmatched names. Shipped and unit-tested; not yet observed
+      live. **Needs an extension reload.**
+- [ ] **Popup opens only on click; refresh updates meta quietly** — requires
+      clicking the browser toolbar, which is browser chrome that automation
+      cannot drive. Must be done by hand.
+- [ ] **Offline / blocked refresh: last pack still renders, no toast** —
+      requires DevTools request blocking. Must be done by hand. Partial:
+      `tests/background.test.js` asserts a failed refresh keeps prior packs
+      and writes failure meta only, and the extension contains no
+      notification, badge, or toast API calls.
+
+### Superseded spec items
+
+Two original items describe the pre-band design and are no longer meaningful:
+
+- *"macros align in 3×2 grid, price left / calories right"* — the strip is now
+  a photo-anchored overlay band, because DoorDash's menu grid is virtualized
+  on a fixed row pitch and an in-flow strip cannot grow the card without
+  overlapping the row below.
+- *"🔍 appears only when extras exist"* — the band has no room for the
+  magnifier, so `extras[]` and the "Base item · excludes customizations"
+  caveat now appear only on the item-detail view.
+
+## What live QA found that tests did not
+
+Recorded because each was green in CI while broken in the browser.
+
+1. **The strip was mounted inside DoorDash's price row**, a `nowrap` flex
+   container. Its `flex: 0 0 100%` squeezed the price to **zero width** and
+   overflowed the row by 34px.
+2. **The card grid is virtualized** — wrappers are absolutely positioned on a
+   fixed 301px pitch via transforms, so growing a card overlapped the next row
+   by 46-66px. No CSS on the card can move a sibling's transform.
+3. **Featured tiles have no `<img>` until their photo loads**, so photo
+   lookup returned null and the band anchored to the wrong ancestor.
+4. **Modifier rows were undiscoverable.** DoorDash renders none of the
+   `OptionRow` / `ModifierOption` testids or classes the code looked for, and
+   the `<label>` is a *sibling* of its `<input>`, not an ancestor — so all
+   four strategies matched zero rows.
+5. **Modifier names did not match** even in principle: DoorDash says
+   `Extra Chicken` where the PDF says `Add Chicken`.
+6. **Cards painted before the pack resolved were locked** as "Nutrition
+   unavailable" permanently, because the paint mark was set unconditionally.
 
 ## How to run manual QA
 
 1. `npm test` — confirm green.
-2. Load unpacked from `extension/` (see README).
-3. Open a Mendocino Farms store on `https://www.doordash.com/`.
-4. Walk the spec checklist top to bottom; check boxes only for what you observe on the live page.
-5. Repeat on a non-Mendocino DoorDash store for the no-overlay item.
-6. Optional: DevTools → Network → block the GitHub raw URL; reload and confirm strips still render.
+2. `npm run build` — **required before every extension reload**; Chrome loads
+   the generated bundle, not the source.
+3. Reload the extension at `chrome://extensions`, then hard-refresh the store
+   tab (Cmd+Shift+R). A stale bundle has already caused one false "it isn't
+   working" report.
+4. Open `https://www.doordash.com/store/mendocino-farms-los-angeles-5277/`.
+   The generic `/store/mendocino-farms/` path is a 404 with no menu and has
+   also produced a false failure report.
+5. Open the console and read the coverage line; work the unmatched list.
+6. Repeat on any non-Mendocino store for the no-overlay item.
 
----
+## Known oddities in the source data
 
-## Task 6 — DoorDash DOM adapter + menu list injection (2026-08-08)
-
-**Status: blocked on live verification.** Neither the in-IDE browser tooling
-nor a direct `fetch`/`WebFetch` of `doordash.com` was reachable from this
-environment (no usable browser tab could be created; the direct fetch timed
-out, likely bot/geo protection). Per the task brief's fallback, `doordash.js`
-ships the defensive heuristic strategy instead of live-locked selectors, and
-this is recorded here as an open concern rather than silently assumed done.
-
-### What was verified
-
-- Automated tests (`node --test tests/doordash.test.js`, part of `npm test`,
-  32/32 passing) exercise `getStoreHaystack`, `findMenuItemNodes`, and
-  `isItemDetailPage` against real parsed DOM trees (via `jsdom`), covering:
-  - the primary `[data-anchor-id*="MenuItem"]` selector path,
-  - the hashed-class/`data-testid` fallback path,
-  - empty-list behavior when no cards match,
-  - no-throw behavior when `querySelectorAll`/`querySelector` throw.
-- `findMenuItemNodes` never throws into the page — all queries are wrapped
-  and degrade to `[]`.
-- `content.js` wiring matches the brief: paints only when `findPackForStore`
-  matches, marks painted nodes with `data-mm-painted`, re-runs on
-  `MutationObserver` mutations, and returns early on `isItemDetailPage()`.
-
-### What is NOT yet verified (requires a live DoorDash session)
-
-- [ ] Load a real Mendocino Farms DoorDash store page with the unpacked
-      extension installed.
-- [ ] Confirm `[data-anchor-id*="MenuItem"]` (or the class/`data-testid`
-      fallback) actually matches DoorDash's current menu-card markup.
-- [ ] Matched items show the aligned macro grid; unknown items show `—`.
-- [ ] Visiting a non-Mendocino DoorDash store shows no strips.
-- [ ] Scrolling / "load more" produces new cards that get strips (via the
-      `MutationObserver`).
-- [ ] DoorDash's native layout (image sizing, card spacing) is unaffected.
-- [ ] `isItemDetailPage()`'s dialog heuristic correctly recognizes an open
-      item-customization modal on a real page (this only guards against
-      double-painting the list; Task 7 owns the actual item-detail view).
-
-### Next steps for whoever gets a working DoorDash session
-
-1. Open a Mendocino Farms store on `doordash.com` with the extension loaded.
-2. In DevTools, inspect a menu card and confirm/adjust the selectors in
-   `extension/content/doordash.js` (each query is centralized in
-   `candidateRoots`, `findNameEl`, `findPriceEl`, and the `isItemDetailPage`
-   modal check).
-3. Update the dated comment block at the top of `doordash.js` with the new
-   discovery date and findings, then check off the boxes above.
-
-## Task 7 — Item detail page + modifier deltas (2026-08-08)
-
-**Status: blocked on live verification**, same root cause as Task 6: no
-in-IDE browser tab could be created (`browser_tabs` lists none, and
-`browser_navigate` to `doordash.com` and to a blank/new tab both fail with
-"No browser tab available" in this environment). `findDetailNameEl` /
-`findDetailItemName` / `findModifierNodes` in `doordash.js` therefore ship as
-documented defensive heuristics — layered stable-attribute → hashed-class →
-generic-DOM-shape fallbacks, all wrapped so a selector miss degrades to
-`null`/`[]` instead of throwing into the host page — not live-locked
-selectors.
-
-### What was verified
-
-- `node --test tests/doordash.test.js` (part of `npm test`, 38/38 passing)
-  exercises `findDetailItemName` and `findModifierNodes` against real parsed
-  DOM (via `jsdom`), covering:
-  - `h1`/`h2` heading match inside an open `role="dialog"` modal,
-  - `data-testid`/class-substring fallback when no heading is present,
-  - `null`/`[]` when no name/rows are found, and when the document throws,
-  - modifier option rows via `data-testid`/class row selectors,
-  - modifier option fallback via `<label>` wrapping a `checkbox`/`radio`
-    input when no row-selector matches,
-  - trailing `+$1.50`-style price text stripped from the option name so it
-    doesn't pollute matching.
-- `content.js`'s `paintDetail` matches the brief: mounts the base strip once
-  near the detail header (marked `data-mm-detail-strip` to avoid
-  re-mounting on `MutationObserver` re-runs); only attempts modifier deltas
-  when the item itself is a high-confidence `matchItem` hit; each modifier
-  row only gets a delta span when `matchModifier` is also a high-confidence
-  hit (unknown/ambiguous modifiers show nothing, never a wrong number);
-  `boot()` now routes to `paintDetail()` vs `paintList()` based on
-  `isItemDetailPage()` on every observed mutation, instead of the old
-  early-return no-op on detail pages.
-- No linter errors in changed files.
-
-### What is NOT yet verified (requires a live DoorDash session)
-
-- [ ] Open a Farm Club (or similar Mendocino Farms) item detail view.
-- [ ] Confirm the header-name selectors in `findDetailNameEl` actually match
-      DoorDash's current item-detail markup (heading text vs. `data-testid`/
-      hashed-class fallback).
-- [ ] Confirm the modifier-row selectors in `findModifierNodes` match real
-      "Add Chicken" / "Add Avocado"-style option rows (row-container vs.
-      checkbox/radio-`<label>` fallback), and that price text (e.g.
-      `+$1.50`) is correctly stripped from the option name before matching.
-- [ ] Base macros strip appears once near the header, doesn't duplicate on
-      re-render.
-- [ ] Known modifiers (e.g. Add Chicken / Add Avocado) show a
-      `+N cal · +Ng P` delta beside the option when the pack defines deltas.
-- [ ] Unknown/ambiguous modifiers show no delta (never a wrong number).
-- [ ] Visiting a non-Mendocino store's item detail shows no strip/deltas.
-
-### Next steps for whoever gets a working DoorDash session
-
-1. Open a Mendocino Farms item detail view on `doordash.com` with the
-   extension loaded.
-2. In DevTools, inspect the header name and a modifier option row; adjust
-   the selectors in `extension/content/doordash.js` (`detailNameCandidates`,
-   `MODIFIER_ROW_SELECTORS`, `findModifierNameEl`) as needed.
-3. Update the dated comment block above `findModalRoot` in `doordash.js`
-   with the new discovery date and findings, then check off the boxes above.
-
-## Task 10 — Complete Mendocino pack from official PDF (2026-08-08)
-
-**Status: pack complete and verified against the PDF; storefront coverage
-still unverified** (same missing DoorDash session as Tasks 6 and 7).
-
-The pack grew from the 3-item starter to **101 items and 14 add-on modifiers**,
-covering every row on pages 1-3 of the Feb 2026 Nutritional & Allergen PDF:
-seasonal, sandwiches, half sandwiches, salads (and their "without dressing"
-rows), wraps, kids meals, dressings & sauces, breads, deli sides, soups and
-beverages.
-
-### Data provenance
-
-Numbers were not typed by hand. The PDF was downloaded and converted with
-`pdftotext -layout`, then a throwaway script mapped each table row to an item.
-The column order is fixed by the PDF header: Serving, Calories, Calories from
-Fat, Total Fat, Saturated Fat, Trans Fat, Cholesterol, Sodium, Carbohydrates,
-**Fiber, Total Sugar**, Protein. Note fiber precedes sugar — reading those two
-in the printed order matters, and `Lemonade (16 oz)` (0 g fiber / 58 g sugar)
-is the easiest row to confirm it on.
-
-Conventions applied:
-
-- Primary macros are the seven the strip renders; the remaining published
-  columns go to `extras[]` labelled with the PDF's own header text.
-- Where the PDF prints `< 1g`, the numeric field is `0` and an extras row
-  (e.g. `Protein (g) as published` / `< 1g`) preserves the printed value. In
-  modifier `deltas` the key is omitted entirely rather than guessed.
-- Add-on deltas are attached only to the items the PDF publishes them under.
-  The same add-on is published with different sodium in different sections
-  (Chicken Adobado is 500 mg under salads, 520 mg under wraps), so they are
-  not copied across items.
-
-### What was verified
-
-- `npm run sync-pack` passes `validatePack` and `packs/` matches `extension/packs/`.
-- `npm test` — 50/50 passing (3 new pack tests).
-- A second script re-parsed the PDF with a different splitter (right-anchored
-  regex rather than column gutters) and reconciled all 115 in-scope rows
-  against the JSON; the only differences were the intentionally omitted
-  `< 1g` delta keys.
-- Hand spot-check of 5 items against the printed rows: The Farm Club
-  (760/40 P), Chicken Parm Dip (940/46 P), Thai Mango Salad (840/35 P),
-  Golden State Cobb (750/30 P), Modern Caesar Wrap (1090/26 P) — all match.
-- The real `matchItem`/`matchModifier` were run against DoorDash-style titles
-  ("Farm Club", "Not So Fried Chicken Sandwich", "Golden State Cobb Salad",
-  "1/2 The Farm Club", …) and all resolved; "Some Random Burrito" and
-  "Add Avocado" correctly miss.
-- The generator fails loudly if any two items share a normalized name or
-  alias, and `pack.test.js` now asserts the same property on the shipped file,
-  so an ambiguous alias can't silently make an item unmatchable.
-
-### What is NOT yet verified (requires a live DoorDash session)
-
-- [ ] Compare the storefront's actual section list against the pack — the PDF
-      is the full brand menu, and a given store may not carry every row.
-- [ ] Confirm DoorDash's item titles match the aliases (especially the
-      seasonal items, which rotate, and the sized rows below).
-- [ ] Sized items (`Iced Tea (16 oz)`, `Curried Couscous (Small)`, soups
-      `(Cup)`/`(Bowl)`) are separate pack items. If DoorDash instead lists one
-      item with a size *modifier*, those need aliases or size deltas.
-- [ ] `(No Dressing)` rows are separate items. If DoorDash exposes "no
-      dressing" as a modifier instead, it will show no delta (the PDF
-      publishes absolute rows, not deltas, so none were derived).
-- [ ] Confirm which add-ons the storefront actually offers per item.
-
-### Known oddity in the source data
-
-`The Farmhouse Ranch Salad` is published as 350 cal at 15.2 oz, but its
-"without dressing" row is **460 cal at 16.0 oz** — heavier and higher-calorie
-than the dressed salad, unlike every other salad pair in the PDF. Both rows
-are transcribed as printed rather than "corrected". This is one reason no
-`No Dressing` deltas were derived by subtraction: on this pair the subtraction
-would produce a nonsensical *positive* calorie delta. Worth raising with
-Mendocino Farms or re-checking against the next PDF revision.
+- `The Farmhouse Ranch Salad` is published as 350 cal at 15.2 oz, but its
+  "without dressing" row is **460 cal at 16.0 oz** — heavier and higher
+  calorie than the dressed salad, unlike every other pair in the PDF. Both are
+  transcribed as printed rather than "corrected", and it is why no
+  `No Dressing` deltas were derived by subtraction: on this pair subtraction
+  yields a nonsensical positive calorie delta.
+- DoorDash's own description for Chicken Pesto Caprese says **860 cal** while
+  the June 2026 PDF row says **800**. Unresolved — possibly a bread variant,
+  possibly DoorDash carrying newer data than the published PDF. Not
+  reconciled; the pack follows the PDF.
