@@ -117,7 +117,26 @@ Recorded because each was green in CI while broken in the browser.
   transcribed as printed rather than "corrected", and it is why no
   `No Dressing` deltas were derived by subtraction: on this pair subtraction
   yields a nonsensical positive calorie delta.
-- DoorDash's own description for Chicken Pesto Caprese says **860 cal** while
-  the June 2026 PDF row says **800**. Unresolved — possibly a bread variant,
-  possibly DoorDash carrying newer data than the published PDF. Not
-  reconciled; the pack follows the PDF.
+- **DoorDash's inline calorie notes disagree with the PDF on ~2/3 of items.**
+  Measured 2026-08-11 across the six cards whose descriptions carry a
+  `(N cal)` note:
+
+  | Item | DoorDash | PDF / pack | Δ |
+  | --- | --- | --- | --- |
+  | The Modern Caesar | 610 | 680 | −70 |
+  | Chicken Pesto Caprese | 860 | 800 | +60 |
+  | Peruvian Steak | 760 | 780 | −20 |
+  | Chimichurri Steak & Bacon | 940 | 950 | −10 |
+  | Avocado & Quinoa Superfood Ensalada | 690 | 690 | 0 |
+  | The Farm Club | 760 | 760 | 0 |
+
+  This is **not** a transcription error: two items match exactly and the
+  disagreements run in both directions, whereas a bad parse would skew one
+  way. The `(N cal)` note is part of the merchant-authored description text,
+  which drifts independently of the formal nutrition PDF.
+
+  The pack follows the PDF, so on four of six cards a user sees two different
+  calorie figures — DoorDash's in the description, ours in the band. Accepted
+  deliberately: the PDF is the operator's published nutrition document and is
+  the only source that also supplies the other six macros. Worth raising with
+  Mendocino Farms, since one of the two is wrong on their own menu.
