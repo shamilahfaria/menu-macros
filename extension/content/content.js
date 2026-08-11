@@ -13,6 +13,11 @@ import { createNutritionStrip, createModifierDelta } from "./ui.js";
 const MARK = "data-mm-painted";
 const DETAIL_STRIP_MARK = "data-mm-detail-strip";
 const PAINT_DEBOUNCE_MS = 150;
+const PREFETCH_SCROLL_STEP_PX = 700;
+const PREFETCH_SETTLE_MS = 120;
+const PREFETCH_MAX_STEPS = 60;
+const PREFETCH_IDLE_PASSES = 3;
+const PREFETCH_STYLE_ID = "mm-prefetch-style";
 
 // Cached for the lifetime of the page so repeated MutationObserver passes
 // don't re-fetch/re-validate chrome.storage on every DOM tick. Only
@@ -30,16 +35,103 @@ async function getActivePack() {
   return findPackForStore(cachedPacks, haystack);
 }
 
-// Some DoorDash layouts nest the name element directly under the card
-// root, in which case mountEl === root and inserting "afterend" would
-// place the strip as a sibling of the card (outside it) instead of inside.
-// Falling back to appending into root keeps the strip contained.
-function mountStrip(root, mountEl, strip) {
-  if (mountEl && mountEl !== root && mountEl.parentElement) {
-    mountEl.insertAdjacentElement("afterend", strip);
-  } else {
-    root.appendChild(strip);
+// The strip mounts as an overlay on the card photo (doordash.js picks the
+// host), so nothing here has to resize or unclip DoorDash's boxes — the card
+// keeps its natural height and the virtualized grid stays consistent.
+export function mountListStrip(node, strip) {
+  const mount = node.stripMount || { type: "append", el: node.root };
+
+  // Side-image cards wrap the photo in static boxes, so the band would resolve
+  // against the whole card and span its text column. `position: relative` with
+  // no offsets moves nothing; it only makes the photo box a containing block.
+  if (mount.ensureRelative && mount.el.style.position === "") {
+    mount.el.style.position = "relative";
   }
+
+  if (mount.type === "after") {
+    mount.el.insertAdjacentElement("afterend", strip);
+    return;
+  }
+  mount.el.appendChild(strip);
+}
+
+function ensurePrefetchStyles() {
+  if (document.getElementById(PREFETCH_STYLE_ID)) return;
+  const style = document.createElement("style");
+  style.id = PREFETCH_STYLE_ID;
+  style.textContent = `
+    html.mm-prefetching .mm-root { visibility: hidden !important; }
+  `;
+  document.head.appendChild(style);
+}
+
+function maxScrollTop() {
+  return Math.max(
+    0,
+    Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+      - window.innerHeight,
+  );
+}
+
+// DoorDash lazy-loads menu sections on scroll. Walk the page once at load,
+// paint every card while strips are hidden, then restore the user's scroll
+// position so they don't watch strips pop in while browsing.
+async function prefetchLazyMenu(paintListFn) {
+  const pack = await getActivePack();
+  if (!pack) return;
+
+  ensurePrefetchStyles();
+  document.documentElement.classList.add("mm-prefetching");
+  const savedScrollY = window.scrollY;
+  let lastNodeCount = 0;
+  let idlePasses = 0;
+
+  try {
+    for (let step = 0; step < PREFETCH_MAX_STEPS; step += 1) {
+      await paintListFn();
+
+      const nodeCount = findMenuItemNodes().length;
+      const targetY = Math.min(maxScrollTop(), (step + 1) * PREFETCH_SCROLL_STEP_PX);
+      window.scrollTo(0, targetY);
+      await new Promise((resolve) => setTimeout(resolve, PREFETCH_SETTLE_MS));
+
+      const atBottom = targetY >= maxScrollTop() - 4;
+      if (nodeCount === lastNodeCount && atBottom) {
+        idlePasses += 1;
+        if (idlePasses >= PREFETCH_IDLE_PASSES) break;
+      } else {
+        idlePasses = 0;
+      }
+      lastNodeCount = nodeCount;
+    }
+
+    await paintListFn();
+  } finally {
+    window.scrollTo(0, savedScrollY);
+    document.documentElement.classList.remove("mm-prefetching");
+  }
+}
+
+// A strip can be mounted inside the card (photo overlay, in-flow fallback) or
+// as the card's next sibling, so look in both places.
+function existingStrip(root) {
+  const inside = root.querySelector(".mm-root");
+  if (inside) return inside;
+  const sibling = root.nextElementSibling;
+  return sibling?.classList?.contains("mm-root") ? sibling : null;
+}
+
+// Repaints whenever the match *state* (matched vs unavailable) differs from
+// what's mounted, rather than locking after the first pass. A card painted
+// before the pack resolves would otherwise stay "Nutrition unavailable"
+// forever — same reasoning as paintDetailStrip below.
+export function paintListNode(node, item) {
+  const state = item ? "1" : "0";
+  if (node.root.getAttribute(MARK) === state) return;
+
+  existingStrip(node.root)?.remove();
+  mountListStrip(node, createNutritionStrip({ item, variant: "list" }));
+  node.root.setAttribute(MARK, state);
 }
 
 async function paintList() {
@@ -47,12 +139,7 @@ async function paintList() {
   if (!pack) return;
 
   for (const node of findMenuItemNodes()) {
-    if (node.root.getAttribute(MARK) === "1") continue;
-    const item = matchItem(node.name, pack.items);
-    const priceText = node.priceEl?.textContent?.trim() || "";
-    const strip = createNutritionStrip({ item, priceText });
-    mountStrip(node.root, node.mountEl, strip);
-    node.root.setAttribute(MARK, "1");
+    paintListNode(node, matchItem(node.name, pack.items));
   }
 }
 
@@ -150,6 +237,10 @@ function debounce(fn, ms) {
 async function boot() {
   const paint = () => (isItemDetailPage() ? paintDetail() : paintList());
   const schedulePaint = createPaintScheduler(paint);
+
+  if (!isItemDetailPage()) {
+    await prefetchLazyMenu(paintList);
+  }
 
   schedulePaint();
 

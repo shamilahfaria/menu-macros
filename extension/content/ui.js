@@ -1,11 +1,23 @@
+// One table, two label widths: the detail view has room to spell macros out,
+// the card band does not. `primary` splits the three headline macros (shown
+// beside calories) from the secondary row.
 const MACROS = [
-  ["Protein", "proteinG", "g"],
-  ["Carbs", "carbsG", "g"],
-  ["Fat", "fatG", "g"],
-  ["Sodium", "sodiumMg", "mg"],
-  ["Sugar", "sugarG", "g"],
-  ["Fiber", "fiberG", "g"],
+  ["Protein", "P", "proteinG", "g", true],
+  ["Carbs", "C", "carbsG", "g", true],
+  ["Fat", "F", "fatG", "g", true],
+  ["Sodium", "Sodium", "sodiumMg", "mg", false],
+  ["Sugar", "Sugar", "sugarG", "g", false],
+  ["Fiber", "Fiber", "fiberG", "g", false],
 ];
+
+// DoorDash's menu grid is virtualized: card wrappers are absolutely positioned
+// on a fixed row pitch, so a card that grows overlaps the row below instead of
+// making room. The list variant therefore renders as an overlay band anchored
+// to the card photo — it takes part in no layout, so the virtualizer's
+// arithmetic stays correct. Price and the base-item caveat stay off the band;
+// the card already shows the price, and the caveat lives on the detail view.
+const BAND_MACROS = MACROS.filter(([, , , , primary]) => primary);
+const BAND_SECONDARY = MACROS.filter(([, , , , primary]) => !primary);
 
 const DELTAS = [
   ["calories", " cal"],
@@ -19,11 +31,18 @@ const DELTAS = [
 
 const STYLES = `
   :host {
-    display: block;
+    box-sizing: border-box;
+    clear: both;
     color: #191919;
+    display: block;
+    flex: 0 0 100%;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-size: 12px;
+    grid-column: 1 / -1;
     line-height: 1.3;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
   }
 
   * {
@@ -57,6 +76,81 @@ const STYLES = `
     display: grid;
     gap: 8px 12px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Overlay band (list variant). Anchored to the card photo, out of flow. */
+  :host(.mm-band) {
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+  }
+
+  .band {
+    /* Right padding clears DoorDash's floating "+" button (32px + inset). */
+    background: linear-gradient(
+      to top,
+      rgb(0 0 0 / 82%) 0%,
+      rgb(0 0 0 / 66%) 42%,
+      rgb(0 0 0 / 28%) 74%,
+      rgb(0 0 0 / 0%) 100%
+    );
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+    padding: 22px 52px 8px 10px;
+    pointer-events: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .band-primary {
+    align-items: baseline;
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .band-cal {
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: -0.2px;
+    line-height: 1.1;
+  }
+
+  .band-cal-unit {
+    font-size: 10.5px;
+    font-weight: 500;
+    margin-left: 2px;
+    opacity: 0.82;
+  }
+
+  .band-macros {
+    font-size: 10.5px;
+    font-weight: 550;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+  }
+
+  .band-macros b {
+    font-weight: 650;
+  }
+
+  .band-secondary {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+    margin-top: 2px;
+    opacity: 0.72;
+    white-space: nowrap;
+  }
+
+  .band.unavailable {
+    font-size: 11px;
+    font-weight: 550;
+    letter-spacing: 0.1px;
+    opacity: 0.85;
+    padding-bottom: 10px;
   }
 
   .macro-label {
@@ -159,7 +253,7 @@ function formatValue(value, unit) {
 }
 
 export function formatMacros(item) {
-  return MACROS.map(([label, key, unit]) => ({
+  return MACROS.map(([label, , key, unit]) => ({
     label,
     value: formatValue(item?.[key], unit),
   }));
@@ -203,23 +297,48 @@ function renderExtras(item) {
   `;
 }
 
-export function createNutritionStrip({ item, priceText = "" } = {}) {
-  const host = document.createElement("div");
-  host.className = "mm-root";
-  const shadow = host.attachShadow({ mode: "open" });
-  const macros = formatMacros(item).map(({ label, value }) => `
+function renderMacroGrid(entries) {
+  return entries.map(({ label, value }) => `
     <div class="macro">
       <span class="macro-label">${label}</span>
       <span class="macro-value">${value}</span>
     </div>
   `).join("");
+}
+
+function renderBandRow(entries, item, { bold } = {}) {
+  return entries
+    .map(([, short, key, unit]) => {
+      const value = formatValue(item[key], unit);
+      return `${short} ${bold ? `<b>${value}</b>` : value}`;
+    })
+    .join(" · ");
+}
+
+function renderListStrip(item) {
+  if (item == null) {
+    return `<div class="band unavailable">Nutrition unavailable</div>`;
+  }
+
+  return `
+    <div class="band">
+      <div class="band-primary">
+        <span class="band-cal">${formatValue(item.calories, "")}<span class="band-cal-unit">cal</span></span>
+        <span class="band-macros">${renderBandRow(BAND_MACROS, item, { bold: true })}</span>
+      </div>
+      <div class="band-secondary">${renderBandRow(BAND_SECONDARY, item)}</div>
+    </div>
+  `;
+}
+
+function renderDetailStrip(item, priceText) {
+  const macros = renderMacroGrid(formatMacros(item));
   const calories = item == null ? "—" : formatValue(item.calories, "");
   const footer = item == null
     ? "Nutrition unavailable"
     : "Base item · excludes customizations";
 
-  shadow.innerHTML = `
-    <style>${STYLES}</style>
+  return `
     <div class="strip${item == null ? " unavailable" : ""}">
       <div class="summary">
         <span class="price">${escapeHtml(priceText)}</span>
@@ -231,6 +350,17 @@ export function createNutritionStrip({ item, priceText = "" } = {}) {
         ${renderExtras(item)}
       </div>
     </div>
+  `;
+}
+
+export function createNutritionStrip({ item, priceText = "", variant = "detail" } = {}) {
+  const host = document.createElement("div");
+  host.className = variant === "list" ? "mm-root mm-band" : "mm-root";
+  const shadow = host.attachShadow({ mode: "open" });
+
+  shadow.innerHTML = `
+    <style>${STYLES}</style>
+    ${variant === "list" ? renderListStrip(item) : renderDetailStrip(item, priceText)}
   `;
 
   return host;

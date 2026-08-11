@@ -1,7 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { JSDOM } from "jsdom";
-import { paintDetailStrip, paintModifierDeltas } from "../extension/content/content.js";
+import {
+  mountListStrip,
+  paintDetailStrip,
+  paintModifierDeltas,
+} from "../extension/content/content.js";
 
 const item = {
   calories: 760,
@@ -87,4 +91,98 @@ test("paintModifierDeltas never marks a row that never finds a delta", () => {
 
   assert.equal(root.getAttribute("data-mm-painted"), null);
   assert.equal(mountEl.children.length, 0);
+});
+
+test("mountListStrip appends list strips to GenericItemCard", () => {
+  const doc = useDom(`
+    <div data-testid="MenuItem">
+      <div data-testid="GenericItemCard" id="card">
+        <div id="col"><h3>The Farm Club</h3><span>$14.50</span></div>
+        <img alt="" />
+      </div>
+    </div>
+  `);
+  const card = doc.getElementById("card");
+  const strip = doc.createElement("div");
+  strip.className = "mm-root";
+
+  mountListStrip({
+    root: doc.querySelector('[data-testid="MenuItem"]'),
+    layout: "list",
+    stripMount: { type: "append", el: card },
+  }, strip);
+
+  assert.equal(card.lastElementChild, strip);
+});
+
+test("mountListStrip inserts list strips after the content anchor when needed", () => {
+  const doc = useDom(`
+    <div data-testid="MenuItem" id="item">
+      <h3>The Farm Club</h3>
+      <span id="price">$14.50</span>
+      <span id="desc">Rotisserie chicken and bacon</span>
+    </div>
+  `);
+  const desc = doc.getElementById("desc");
+  const strip = doc.createElement("div");
+  strip.className = "mm-root";
+
+  mountListStrip({
+    root: doc.getElementById("item"),
+    layout: "list",
+    stripMount: { type: "after", el: desc },
+  }, strip);
+
+  assert.equal(desc.nextElementSibling, strip);
+});
+
+test("mounting the strip leaves DoorDash's own boxes untouched", () => {
+  const doc = useDom(`
+    <div id="grid">
+      <div id="cell">
+        <div data-testid="MenuItem" id="item">
+          <div id="photo" style="position: relative"><img src="x.jpg"></div>
+        </div>
+      </div>
+    </div>
+  `);
+  const strip = doc.createElement("div");
+  strip.className = "mm-root mm-band";
+
+  mountListStrip({
+    root: doc.getElementById("item"),
+    layout: "list",
+    stripMount: { type: "append", el: doc.getElementById("photo") },
+  }, strip);
+
+  assert.equal(strip.parentElement.id, "photo", "band anchors to the photo host");
+  // The virtualized grid positions cards on a fixed pitch, so we must not
+  // resize or unclip anything: no injected attributes, no layout stylesheet.
+  for (const id of ["grid", "cell", "item", "photo"]) {
+    const el = doc.getElementById(id);
+    assert.equal(el.hasAttribute("data-mm-card"), false, id);
+    assert.equal(el.hasAttribute("data-mm-card-host"), false, id);
+    assert.equal(el.getAttribute("style") || "", id === "photo" ? "position: relative" : "", id);
+  }
+  assert.equal(doc.getElementById("mm-layout-style"), null, "no layout overrides injected");
+});
+
+test("mountListStrip mounts featured carousel strips as card siblings", () => {
+  const doc = useDom(`
+    <div id="wrap">
+      <div data-testid="image-action-card-container"><span>The Farm Club</span></div>
+    </div>
+  `);
+  const root = doc.querySelector('[data-testid="image-action-card-container"]');
+  const strip = doc.createElement("div");
+  strip.className = "mm-root";
+
+  mountListStrip({
+    root,
+    layout: "featured",
+    stripMount: { type: "after", el: root },
+  }, strip);
+
+  assert.equal(root.nextElementSibling, strip);
+  assert.equal(root.parentElement.lastElementChild, strip);
 });

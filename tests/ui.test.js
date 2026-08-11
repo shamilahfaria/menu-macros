@@ -71,6 +71,34 @@ test("formatDeltaText handles negative and zero deltas", () => {
   assert.equal(formatDeltaText(null), "");
 });
 
+test("list strip renders an out-of-flow photo band carrying all seven macros", () => {
+  const host = createNutritionStrip({ item, priceText: "$14.50", variant: "list" });
+  const shadow = host.shadowRoot;
+
+  // The band overlays the card photo; DoorDash's grid is virtualized on a
+  // fixed row pitch, so the strip must not participate in layout at all.
+  assert.equal(host.className, "mm-root mm-band", "host is flagged for :host(.mm-band)");
+  assert.match(shadow.textContent, /position:\s*absolute/, "band is positioned out of flow");
+
+  assert.equal(shadow.querySelector(".price"), null, "card already shows the price");
+  assert.equal(shadow.querySelector(".footer"), null, "caveat only belongs on the detail view");
+
+  assert.equal(shadow.querySelector(".band-cal").textContent, "760cal");
+  assert.equal(shadow.querySelector(".band-macros").textContent, "P 40g · C 69g · F 34g");
+  assert.equal(
+    shadow.querySelector(".band-secondary").textContent,
+    "Sodium 1620mg · Sugar 7g · Fiber 6g",
+  );
+});
+
+test("unmatched list strip collapses to a single quiet line", () => {
+  const shadow = createNutritionStrip({ item: null, variant: "list" }).shadowRoot;
+
+  const band = shadow.querySelector(".band.unavailable");
+  assert.equal(band.textContent.trim(), "Nutrition unavailable");
+  assert.equal(shadow.querySelectorAll(".band-macros").length, 0, "no empty macros on unmatched cards");
+});
+
 test("matched nutrition strip renders price, calories, macros, footer, and extras in real DOM", () => {
   const host = createNutritionStrip({ item, priceText: "$14.50" });
   const shadow = host.shadowRoot;
