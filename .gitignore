@@ -6,3 +6,4 @@ dist/
 .env
 .env.*
 extension/content/content.bundle.js
+extension/packs/
