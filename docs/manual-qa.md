@@ -1,6 +1,6 @@
 # Manual QA
 
-Live QA run **2026-08-11** against the Mendocino Farms Los Angeles store
+Live QA run **2026-08-11** (9 of 11 items verified) against the Mendocino Farms Los Angeles store
 (`/store/mendocino-farms-los-angeles-5277/`) with the unpacked extension
 loaded in Chrome.
 
@@ -41,12 +41,18 @@ Run `npm test` before manual QA (currently **69/69** passing).
       unauthenticated. It returned **404 for the entire life of the project**
       until the repo was made public on 2026-08-11; every refresh silently
       failed into the catch and kept the bundled pack.
-- [ ] **Modifier deltas render on a real modal** — the discovery and naming
-      bugs below are fixed and unit-tested, but the fix has not yet been
-      watched rendering on a live modal. **Needs an extension reload.**
-- [ ] **Coverage line appears in the console** — `[menu-macros] pack coverage
-      7/11` plus unmatched names. Shipped and unit-tested; not yet observed
-      live. **Needs an extension reload.**
+- [x] **Modifier deltas render on a real modal** — Avocado & Quinoa Superfood
+      Ensalada: the "Add Chicken +$4.74" row renders
+      `+110 cal · +20g P · 0g C · +2.5g F · +500mg Na · 0g S · 0g Fi` inline.
+      31 toggle rows discovered, 1 delta shown — the other 30 options have no
+      published deltas and correctly show nothing. The detail strip itself
+      renders above DoorDash's content with the 3x2 macro grid, the
+      "Base item · excludes customizations" caveat and the extras magnifier.
+      Note DoorDash names this row "Add Chicken" here and "Extra Chicken"
+      on Chicken Pesto Caprese; both now resolve.
+- [x] **Coverage line appears in the console** — observed live:
+      `[menu-macros] pack coverage 10/14` with the four unmatched names, at
+      console.debug level so it stays hidden during normal use.
 - [ ] **Popup opens only on click; refresh updates meta quietly** — requires
       clicking the browser toolbar, which is browser chrome that automation
       cannot drive. Must be done by hand.
