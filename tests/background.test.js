@@ -6,12 +6,14 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const bundledPack = JSON.parse(
-  readFileSync(join(root, "extension/packs/mendocino-farms.json"), "utf8"),
+  readFileSync(join(root, "packs/mendocino-farms.json"), "utf8"),
 );
 
 async function loadBackground({
-  storedPack = { ...bundledPack, version: 2 },
-  remotePack = { ...bundledPack, version: 3, updatedAt: "2026-08-08" },
+  // Relative to the bundled pack so bumping the pack version can't silently
+  // turn these fixtures into no-op refreshes.
+  storedPack = { ...bundledPack, version: bundledPack.version + 1 },
+  remotePack = { ...bundledPack, version: bundledPack.version + 2, updatedAt: "2026-08-08" },
   remoteOk = true,
 } = {}) {
   const listeners = { installed: [], alarm: [], message: [] };
@@ -84,7 +86,7 @@ test("refreshPacks atomically saves valid remote packs", async () => {
   const result = await refreshPacks({ reason: "manual" });
 
   assert.deepEqual(result, { ok: true });
-  assert.equal(storage.packs[0].version, 3);
+  assert.equal(storage.packs[0].version, bundledPack.version + 2);
   assert.equal(storage.packs[0].updatedAt, "2026-08-08");
   assert.equal(storage.meta.lastRefreshOk, true);
   assert.match(storage.meta.lastRefreshAt, /^\d{4}-\d{2}-\d{2}T/);
@@ -104,7 +106,11 @@ test("failed refresh keeps the last good packs and records failure", async () =>
 });
 
 test("refreshPacks rejects a remoteUrl outside the trusted GitHub raw host/path and keeps last good packs", async () => {
-  const untrusted = { ...bundledPack, version: 2, remoteUrl: "https://evil.example.com/packs/mendocino-farms.json" };
+  const untrusted = {
+    ...bundledPack,
+    version: bundledPack.version + 1,
+    remoteUrl: "https://evil.example.com/packs/mendocino-farms.json",
+  };
   const { refreshPacks, storage } = await loadBackground({ storedPack: untrusted });
   const packsBefore = structuredClone(storage.packs);
 
@@ -118,7 +124,7 @@ test("refreshPacks rejects a remoteUrl outside the trusted GitHub raw host/path 
 test("refreshPacks rejects a raw.githubusercontent.com URL outside the allowed repo path", async () => {
   const untrusted = {
     ...bundledPack,
-    version: 2,
+    version: bundledPack.version + 1,
     remoteUrl: "https://raw.githubusercontent.com/someone-else/other-repo/main/packs/mendocino-farms.json",
   };
   const { refreshPacks, storage } = await loadBackground({ storedPack: untrusted });
@@ -134,10 +140,10 @@ test("alarm refreshes only for the pack refresh alarm", async () => {
   const { listeners, storage } = await loadBackground();
 
   await listeners.alarm[0]({ name: "another-alarm" });
-  assert.equal(storage.packs[0].version, 2);
+  assert.equal(storage.packs[0].version, bundledPack.version + 1);
 
   await listeners.alarm[0]({ name: "mm-pack-refresh" });
-  assert.equal(storage.packs[0].version, 3);
+  assert.equal(storage.packs[0].version, bundledPack.version + 2);
 });
 
 test("messages expose refresh, status, and pack summaries", async () => {
@@ -152,12 +158,12 @@ test("messages expose refresh, status, and pack summaries", async () => {
     packs: [{
       id: "mendocino-farms",
       displayName: "Mendocino Farms",
-      updatedAt: "2026-02-01",
-      version: 2,
+      updatedAt: bundledPack.updatedAt,
+      version: bundledPack.version + 1,
     }],
   });
 
   const refreshed = await sendMessage(listener, { type: "MM_REFRESH" });
   assert.deepEqual(refreshed, { ok: true });
-  assert.equal(storage.packs[0].version, 3);
+  assert.equal(storage.packs[0].version, bundledPack.version + 2);
 });

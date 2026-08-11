@@ -10,7 +10,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 function readBundledPack() {
   return JSON.parse(
-    readFileSync(join(root, "extension/packs/mendocino-farms.json"), "utf8")
+    readFileSync(join(root, "packs/mendocino-farms.json"), "utf8")
   );
 }
 

@@ -28,7 +28,7 @@ function isAllowedRemoteUrl(remoteUrl) {
   }
 }
 
-export async function refreshPacks({ reason: _reason } = { reason: "manual" }) {
+export async function refreshPacks() {
   try {
     const current = await getPacks();
     const updated = [];
@@ -87,13 +87,13 @@ chrome.runtime.onInstalled.addListener(async () => {
 
 chrome.alarms.onAlarm.addListener((alarm) => {
   if (alarm.name === ALARM) {
-    return refreshPacks({ reason: "alarm" });
+    return refreshPacks();
   }
 });
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
   if (message?.type === "MM_REFRESH") {
-    refreshPacks({ reason: "manual" }).then(sendResponse);
+    refreshPacks().then(sendResponse);
     return true;
   }
 

@@ -1,16 +1,18 @@
 {
   "id": "mendocino-farms",
   "displayName": "Mendocino Farms",
-  "version": 2,
+  "version": 3,
   "matchHints": [
     "mendocino farms",
     "mendocino-farms"
   ],
   "source": {
-    "url": "https://contact.mendocinofarms.com/wp-content/uploads/2026/02/Feb2026_NutritionalAllergen.pdf",
-    "label": "Mendocino Farms Nutritional & Allergen PDF (Feb 2026)"
+    "url": "https://a.storyblok.com/f/286881299858956/x/3baaa581d6/june2026_nutritional-allergen_0624.pdf",
+    "label": "Mendocino Farms Nutritional & Allergen PDF (June 2026)",
+    "etag": "W/\"a77d061f137c925865b3dffc5e6d7194\"",
+    "lastModified": "Wed, 24 Jun 2026 20:58:04 GMT"
   },
-  "updatedAt": "2026-02-01",
+  "updatedAt": "2026-06-24",
   "remoteUrl": "https://raw.githubusercontent.com/shamilahfaria/menu-macros/main/packs/mendocino-farms.json",
   "items": [
     {
@@ -1423,7 +1425,8 @@
       "id": "not-so-fried-chicken-salad",
       "canonicalName": "\"Not So Fried\" Chicken Salad",
       "aliases": [
-        "Not So Fried Chicken - Salad Style"
+        "Not So Fried Chicken - Salad Style",
+        "\"Not So Fried\" Chicken Sandwich - Salad Style"
       ],
       "calories": 740,
       "proteinG": 31,
@@ -3817,6 +3820,1148 @@
         {
           "label": "Cholesterol (mg)",
           "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "seasonal-goat-with-summer-peaches",
+      "canonicalName": "Seasonal GOAT with Summer Peaches",
+      "aliases": [],
+      "calories": 710,
+      "proteinG": 34,
+      "carbsG": 47,
+      "fatG": 46,
+      "sodiumMg": 1040,
+      "sugarG": 32,
+      "fiberG": 9,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "18.3oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "420"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "6"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "70"
+        }
+      ]
+    },
+    {
+      "id": "tuscan-pesto-salad",
+      "canonicalName": "Tuscan Pesto Salad",
+      "aliases": [],
+      "calories": 780,
+      "proteinG": 40,
+      "carbsG": 49,
+      "fatG": 50,
+      "sodiumMg": 1850,
+      "sugarG": 15,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "17.6 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "460"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "8"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "80"
+        }
+      ]
+    },
+    {
+      "id": "tuscan-pesto-salad-no-dressing",
+      "canonicalName": "Tuscan Pesto Salad (No Dressing)",
+      "aliases": [],
+      "calories": 520,
+      "proteinG": 39,
+      "carbsG": 42,
+      "fatG": 23,
+      "sodiumMg": 1170,
+      "sugarG": 11,
+      "fiberG": 11,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "15.6 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "220"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "80"
+        }
+      ]
+    },
+    {
+      "id": "heirloom-blt",
+      "canonicalName": "Heirloom BLT",
+      "aliases": [],
+      "calories": 860,
+      "proteinG": 26,
+      "carbsG": 76,
+      "fatG": 47,
+      "sodiumMg": 1530,
+      "sugarG": 8,
+      "fiberG": 4,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "13.5 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "430"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "11"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "not-so-fried-chicken-salad-style-no-dressing",
+      "canonicalName": "Not So Fried Chicken - Salad Style (No Dressing)",
+      "aliases": [],
+      "calories": 420,
+      "proteinG": 27,
+      "carbsG": 36,
+      "fatG": 20,
+      "sodiumMg": 1020,
+      "sugarG": 11,
+      "fiberG": 7,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "16.1 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "190"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "65"
+        }
+      ]
+    },
+    {
+      "id": "crispy-chicken-tenders-turbo-chef",
+      "canonicalName": "Crispy Chicken Tenders (turbo chef)",
+      "aliases": [],
+      "calories": 320,
+      "proteinG": 30,
+      "carbsG": 18,
+      "fatG": 14,
+      "sodiumMg": 670,
+      "sugarG": 3,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "6.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "130"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2.5"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "60"
+        }
+      ]
+    },
+    {
+      "id": "modern-times-ice-pilsner",
+      "canonicalName": "MODERN TIMES Ice Pilsner",
+      "aliases": [],
+      "calories": 160,
+      "proteinG": 1,
+      "carbsG": 15,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "refuge-blood-orange-wit",
+      "canonicalName": "REFUGE Blood Orange Wit",
+      "aliases": [],
+      "calories": 200,
+      "proteinG": 1,
+      "carbsG": 17,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 4,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "smog-city-ipa",
+      "canonicalName": "SMOG CITY IPA",
+      "aliases": [],
+      "calories": 230,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "three-weavers-cloud-city-hazy-ipa",
+      "canonicalName": "THREE WEAVERS Cloud City Hazy IPA",
+      "aliases": [],
+      "calories": 210,
+      "proteinG": 2,
+      "carbsG": 12,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "madewest-standard-blonde-ale",
+      "canonicalName": "MADEWEST Standard Blonde Ale",
+      "aliases": [],
+      "calories": 210,
+      "proteinG": 2,
+      "carbsG": 18,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "pizza-port-chronic-ale-amber",
+      "canonicalName": "PIZZA PORT Chronic Ale Amber",
+      "aliases": [],
+      "calories": 170,
+      "proteinG": 1,
+      "carbsG": 12,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "mother-earth-boo-koo-ipa",
+      "canonicalName": "MOTHER EARTH Boo Koo IPA",
+      "aliases": [],
+      "calories": 210,
+      "proteinG": 2,
+      "carbsG": 12,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "societe-the-pupil-ipa",
+      "canonicalName": "SOCIETE The Pupil IPA",
+      "aliases": [],
+      "calories": 240,
+      "proteinG": 2,
+      "carbsG": 14,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "mikkeller-windy-hill-hazy-ipa",
+      "canonicalName": "MIKKELLER Windy Hill Hazy IPA",
+      "aliases": [],
+      "calories": 220,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "trumer-pils-pilsner",
+      "canonicalName": "TRUMER Pils Pilsner",
+      "aliases": [],
+      "calories": 180,
+      "proteinG": 1,
+      "carbsG": 14,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "firestone-mind-haze-hazy-ipa",
+      "canonicalName": "FIRESTONE Mind Haze Hazy IPA",
+      "aliases": [],
+      "calories": 200,
+      "proteinG": 2,
+      "carbsG": 11,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "seismic-megathrust-ipa",
+      "canonicalName": "SEISMIC Megathrust IPA",
+      "aliases": [],
+      "calories": 240,
+      "proteinG": 2,
+      "carbsG": 14,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "sudwerk-people-s-pilsner",
+      "canonicalName": "SUDWERK People's Pilsner",
+      "aliases": [],
+      "calories": 190,
+      "proteinG": 1,
+      "carbsG": 14,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "track-7-panic-ipa",
+      "canonicalName": "TRACK 7 Panic IPA",
+      "aliases": [],
+      "calories": 220,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "karbach-brewing-love-street-citrus-wheat",
+      "canonicalName": "KARBACH BREWING Love Street Citrus Wheat",
+      "aliases": [],
+      "calories": 160,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 0,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "community-texas-lager",
+      "canonicalName": "COMMUNITY Texas Lager",
+      "aliases": [],
+      "calories": 120,
+      "proteinG": 1,
+      "carbsG": 10,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "tupps-brewery-juice-pack-pale-ale",
+      "canonicalName": "TUPPS BREWERY Juice Pack Pale Ale",
+      "aliases": [],
+      "calories": 170,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "deep-ellum-brewing-easy-peasy-ipa",
+      "canonicalName": "DEEP ELLUM BREWING Easy Peasy IPA",
+      "aliases": [],
+      "calories": 170,
+      "proteinG": 2,
+      "carbsG": 14,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "fremont-brewing-summer-pale-ale",
+      "canonicalName": "FREMONT BREWING - Summer Pale Ale",
+      "aliases": [],
+      "calories": 160,
+      "proteinG": 2,
+      "carbsG": 13,
+      "fatG": 0,
+      "sodiumMg": 20,
+      "sugarG": 1,
+      "fiberG": 0,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "12 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "0"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "avocado-quinoa-superfood-ensalada-high-portion",
+      "canonicalName": "Avocado & Quinoa Superfood Ensalada (high portion)",
+      "aliases": [],
+      "calories": 200,
+      "proteinG": 6,
+      "carbsG": 14,
+      "fatG": 15,
+      "sodiumMg": 310,
+      "sugarG": 3,
+      "fiberG": 4,
+      "extras": []
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-low-portion",
+      "canonicalName": "Chen's Crispy Rice Salad (low portion)",
+      "aliases": [],
+      "calories": 170,
+      "proteinG": 6,
+      "carbsG": 14,
+      "fatG": 10,
+      "sodiumMg": 380,
+      "sugarG": 6,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "chen-s-crispy-rice-salad-high-portion",
+      "canonicalName": "Chen's Crispy Rice Salad (high portion)",
+      "aliases": [],
+      "calories": 230,
+      "proteinG": 8,
+      "carbsG": 22,
+      "fatG": 14,
+      "sodiumMg": 510,
+      "sugarG": 9,
+      "fiberG": 3,
+      "extras": []
+    },
+    {
+      "id": "the-modern-caesar-low-portion",
+      "canonicalName": "The Modern Caesar (low portion)",
+      "aliases": [],
+      "calories": 160,
+      "proteinG": 4,
+      "carbsG": 8,
+      "fatG": 13,
+      "sodiumMg": 230,
+      "sugarG": 1,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "the-modern-caesar-high-portion",
+      "canonicalName": "The Modern Caesar (high portion)",
+      "aliases": [],
+      "calories": 220,
+      "proteinG": 7,
+      "carbsG": 10,
+      "fatG": 18,
+      "sodiumMg": 310,
+      "sugarG": 2,
+      "fiberG": 3,
+      "extras": []
+    },
+    {
+      "id": "the-modern-caesar-2-0",
+      "canonicalName": "The Modern Caesar 2.0",
+      "aliases": [],
+      "calories": 190,
+      "proteinG": 16,
+      "carbsG": 10,
+      "fatG": 10,
+      "sodiumMg": 410,
+      "sugarG": 3,
+      "fiberG": 5,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "7.3 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "90"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "2"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "id": "field-greens-salad",
+      "canonicalName": "Field Greens Salad",
+      "aliases": [],
+      "calories": 35,
+      "proteinG": 1,
+      "carbsG": 7,
+      "fatG": 0,
+      "sodiumMg": 10,
+      "sugarG": 4,
+      "fiberG": 2,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "4.6 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "5"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "basil-pesto-shells-low-portion",
+      "canonicalName": "Basil Pesto Shells (low portion)",
+      "aliases": [],
+      "calories": 210,
+      "proteinG": 7,
+      "carbsG": 19,
+      "fatG": 12,
+      "sodiumMg": 520,
+      "sugarG": 2,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "basil-pesto-shells-high-portion",
+      "canonicalName": "Basil Pesto Shells (high portion)",
+      "aliases": [],
+      "calories": 310,
+      "proteinG": 10,
+      "carbsG": 27,
+      "fatG": 17,
+      "sodiumMg": 750,
+      "sugarG": 2,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "southern-potato-salad-low-portion",
+      "canonicalName": "Southern Potato Salad (low portion)",
+      "aliases": [],
+      "calories": 210,
+      "proteinG": 1,
+      "carbsG": 17,
+      "fatG": 13,
+      "sodiumMg": 320,
+      "sugarG": 2,
+      "fiberG": 1,
+      "extras": []
+    },
+    {
+      "id": "southern-potato-salad-high-portion",
+      "canonicalName": "Southern Potato Salad (high portion)",
+      "aliases": [],
+      "calories": 280,
+      "proteinG": 2,
+      "carbsG": 23,
+      "fatG": 18,
+      "sodiumMg": 420,
+      "sugarG": 2,
+      "fiberG": 1,
+      "extras": []
+    },
+    {
+      "id": "kale-and-apple-salad-high-portion",
+      "canonicalName": "Kale and Apple Salad (high portion)",
+      "aliases": [],
+      "calories": 270,
+      "proteinG": 1,
+      "carbsG": 18,
+      "fatG": 23,
+      "sodiumMg": 135,
+      "sugarG": 8,
+      "fiberG": 3,
+      "extras": []
+    },
+    {
+      "id": "curried-couscous-low-portion",
+      "canonicalName": "Curried Couscous (low portion)",
+      "aliases": [],
+      "calories": 230,
+      "proteinG": 2,
+      "carbsG": 20,
+      "fatG": 14,
+      "sodiumMg": 480,
+      "sugarG": 5,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "curried-couscous-high-portion",
+      "canonicalName": "Curried Couscous (high portion)",
+      "aliases": [],
+      "calories": 310,
+      "proteinG": 2,
+      "carbsG": 26,
+      "fatG": 19,
+      "sodiumMg": 640,
+      "sugarG": 7,
+      "fiberG": 2,
+      "extras": []
+    },
+    {
+      "id": "meat-cheese-tray",
+      "canonicalName": "Meat & Cheese Tray",
+      "aliases": [],
+      "calories": 2760,
+      "proteinG": 128,
+      "carbsG": 259,
+      "fatG": 140,
+      "sodiumMg": 5510,
+      "sugarG": 138,
+      "fiberG": 13,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "42.8 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "1260"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "63"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "370"
+        }
+      ]
+    },
+    {
+      "id": "veggies-chips-dip-tray",
+      "canonicalName": "Veggies, Chips & Dip Tray",
+      "aliases": [],
+      "calories": 3240,
+      "proteinG": 83,
+      "carbsG": 404,
+      "fatG": 150,
+      "sodiumMg": 5650,
+      "sugarG": 60,
+      "fiberG": 50,
+      "extras": [
+        {
+          "label": "Serving",
+          "value": "56.0 oz"
+        },
+        {
+          "label": "Calories from Fat",
+          "value": "1410"
+        },
+        {
+          "label": "Saturated Fat (g)",
+          "value": "15"
+        },
+        {
+          "label": "Trans Fat (g)",
+          "value": "0"
+        },
+        {
+          "label": "Cholesterol (mg)",
+          "value": "0"
         }
       ]
     }

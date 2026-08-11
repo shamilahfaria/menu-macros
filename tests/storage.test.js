@@ -7,7 +7,7 @@ import { pickPacks } from "../extension/lib/storage.js";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const base = JSON.parse(
-  readFileSync(join(root, "extension/packs/mendocino-farms.json"), "utf8"),
+  readFileSync(join(root, "packs/mendocino-farms.json"), "utf8"),
 );
 const bundled = [{ ...base, version: 1 }];
 const newer = [{ ...base, version: 2, displayName: "M2" }];
