@@ -46,6 +46,9 @@ async function loadBackground({
   };
 
   globalThis.fetch = async (url) => {
+    if (url.endsWith("packs/index.json")) {
+      return { ok: true, json: async () => ({ packs: ["mendocino-farms.json"] }) };
+    }
     if (url.startsWith("chrome-extension://")) {
       return { ok: true, json: async () => structuredClone(bundledPack) };
     }

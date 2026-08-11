@@ -134,12 +134,31 @@ export function paintListNode(node, item) {
   node.root.setAttribute(MARK, state);
 }
 
+// Pack QA: a low match rate and a store that genuinely sells a lot of
+// off-pack items look identical from the outside. Tracking which names went
+// unmatched turns "does this pack work?" into a number plus a to-do list.
+// console.debug is hidden unless verbose logging is on, so this stays silent.
+const coverage = { seen: new Set(), unmatched: new Set(), reported: "" };
+
+export function recordCoverage(name, item, log = console.debug) {
+  coverage.seen.add(name);
+  if (item) coverage.unmatched.delete(name);
+  else coverage.unmatched.add(name);
+
+  const summary = `${coverage.seen.size - coverage.unmatched.size}/${coverage.seen.size}`;
+  if (summary === coverage.reported) return;
+  coverage.reported = summary;
+  log(`[menu-macros] pack coverage ${summary}`, [...coverage.unmatched].sort());
+}
+
 async function paintList() {
   const pack = await getActivePack();
   if (!pack) return;
 
   for (const node of findMenuItemNodes()) {
-    paintListNode(node, matchItem(node.name, pack.items));
+    const item = matchItem(node.name, pack.items);
+    recordCoverage(node.name, item);
+    paintListNode(node, item);
   }
 }
 

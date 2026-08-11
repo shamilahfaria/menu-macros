@@ -241,45 +241,51 @@ test("findDetailNameEl returns null when no name element is found", () => {
   assert.equal(findDetailNameEl({ querySelector() { throw new Error("boom"); } }), null);
 });
 
-test("findModifierNodes reads option rows via data-testid/class heuristics", () => {
-  const doc = docFrom(`
-    <div role="dialog">
-      <h1>The Farm Club</h1>
-      <div data-testid="ModifierOptionRow">
-        <span data-testid="label">Add Chicken</span>
-        <span>+$1.50</span>
-      </div>
-      <div data-testid="ModifierOptionRow">
-        <span data-testid="label">Add Avocado</span>
-        <span>+$1.75</span>
+// Mirrors a real Chicken Pesto Caprese modal captured 2026-08-11: no option
+// testids or classes anywhere, and the <label> is a sibling of its <input>.
+// The option name is the row's first line; price and notes follow beneath.
+const MODIFIER_MODAL = `
+  <div role="dialog">
+    <h1>Chicken Pesto Caprese</h1>
+    <button>Add 1 item to order</button>
+    <div class="ToggleContainer-sc-a">
+      <div class="StyledInlineChildren-sc-b">
+        <div class="InputContainer-sc-c"><input type="radio" id="Toggle-:rv:" /></div>
+        <label for="Toggle-:rv:">Panini-Pressed Ciabatta (Vegan)</label>
       </div>
     </div>
-  `);
+    <div class="ToggleContainer-sc-a">
+      <div class="StyledInlineChildren-sc-b">
+        <div class="InputContainer-sc-c"><input type="checkbox" id="Toggle-:r14:" /></div>
+        <label for="Toggle-:r14:">Extra Chicken+$2.36</label>
+      </div>
+    </div>
+  </div>
+`;
 
-  const nodes = findModifierNodes(doc);
+test("findModifierNodes reads option rows from the toggle controls", () => {
+  const nodes = findModifierNodes(docFrom(MODIFIER_MODAL));
+
   assert.equal(nodes.length, 2);
-  assert.equal(nodes[0].name, "Add Chicken");
-  assert.equal(nodes[1].name, "Add Avocado");
+  assert.equal(nodes[0].name, "Panini-Pressed Ciabatta (Vegan)");
+  assert.equal(nodes[1].name, "Extra Chicken", "run-together price is stripped");
 });
 
-test("findModifierNodes falls back to checkbox/radio labels when no row selectors match", () => {
-  const doc = docFrom(`
-    <div role="dialog">
-      <h1>The Farm Club</h1>
-      <label><input type="checkbox" /><span>Add Chicken</span> <span>+$1.50</span></label>
-      <label><input type="radio" /><span>No dressing</span></label>
-    </div>
-  `);
-
-  const nodes = findModifierNodes(doc);
-  assert.equal(nodes.length, 2);
-  assert.equal(nodes[0].name, "Add Chicken");
-  assert.equal(nodes[1].name, "No dressing");
+test("findModifierNodes handles a label that is not an ancestor of its input", () => {
+  // The previous implementation looked for label:has(input) and so found
+  // nothing at all on the real page.
+  const doc = docFrom(MODIFIER_MODAL);
+  assert.equal(
+    [...doc.querySelectorAll("label")].filter((l) => l.querySelector("input")).length,
+    0,
+    "fixture reproduces the sibling label/input structure",
+  );
+  assert.equal(findModifierNodes(doc).length, 2);
 });
 
 test("findModifierNodes skips rows without a usable name and never throws", () => {
   const emptyRow = docFrom(`
-    <div role="dialog"><div data-testid="ModifierOptionRow"><span></span></div></div>
+    <div role="dialog"><div><input type="checkbox" /><span></span></div></div>
   `);
   assert.deepEqual(findModifierNodes(emptyRow), []);
 

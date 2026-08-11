@@ -5,6 +5,7 @@ import {
   mountListStrip,
   paintDetailStrip,
   paintModifierDeltas,
+  recordCoverage,
 } from "../extension/content/content.js";
 
 const item = {
@@ -185,4 +186,27 @@ test("mountListStrip mounts featured carousel strips as card siblings", () => {
 
   assert.equal(root.nextElementSibling, strip);
   assert.equal(root.parentElement.lastElementChild, strip);
+});
+
+test("recordCoverage reports the match rate and names the unmatched items", () => {
+  const lines = [];
+  const log = (msg, unmatched) => lines.push([msg, unmatched]);
+
+  recordCoverage("The Farm Club", { calories: 760 }, log);
+  recordCoverage("Joe's Classic Chips", null, log);
+  recordCoverage("Chicken Pesto Caprese", { calories: 800 }, log);
+
+  assert.deepEqual(lines.at(-1), [
+    "[menu-macros] pack coverage 2/3",
+    ["Joe's Classic Chips"],
+  ]);
+
+  // A repeat pass over the same cards must not spam an unchanged summary.
+  const before = lines.length;
+  recordCoverage("The Farm Club", { calories: 760 }, log);
+  assert.equal(lines.length, before, "unchanged coverage is not re-reported");
+
+  // A later pass that resolves a match updates the rate.
+  recordCoverage("Joe's Classic Chips", { calories: 210 }, log);
+  assert.deepEqual(lines.at(-1), ["[menu-macros] pack coverage 3/3", []]);
 });
