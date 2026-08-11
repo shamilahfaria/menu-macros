@@ -271,9 +271,12 @@ export function formatDeltaText(modifier) {
   const deltas = modifier?.deltas;
   if (!deltas || typeof deltas !== "object") return "";
 
+  // Zero deltas are dropped: "0g C" on a chicken add-on carries no
+  // information and roughly triples the length of an inline row. A modifier
+  // whose every published delta is zero renders nothing at all.
   return DELTAS.flatMap(([key, suffix]) => {
     const value = deltas[key];
-    if (!Number.isFinite(value)) return [];
+    if (!Number.isFinite(value) || value === 0) return [];
     const sign = value > 0 ? "+" : "";
     return `${sign}${value}${suffix}`;
   }).join(" · ");

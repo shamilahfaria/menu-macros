@@ -851,7 +851,8 @@
           "aliases": [
             "Chicken",
             "Add Grilled Chicken",
-            "Roasted Chicken Breast"
+            "Roasted Chicken Breast",
+            "Extra Chicken"
           ],
           "deltas": {
             "calories": 110,
@@ -866,7 +867,8 @@
         {
           "canonicalName": "Add Impossible Chorizo",
           "aliases": [
-            "Impossible Chorizo"
+            "Impossible Chorizo",
+            "Extra Impossible Chorizo"
           ],
           "deltas": {
             "calories": 130,
@@ -880,7 +882,8 @@
         {
           "canonicalName": "Add Beyond Chorizo",
           "aliases": [
-            "Beyond Chorizo"
+            "Beyond Chorizo",
+            "Extra Beyond Chorizo"
           ],
           "deltas": {
             "calories": 140,
@@ -1038,7 +1041,8 @@
         {
           "canonicalName": "Add Chicken Adobado",
           "aliases": [
-            "Chicken Adobado"
+            "Chicken Adobado",
+            "Extra Chicken Adobado"
           ],
           "deltas": {
             "calories": 100,
@@ -1053,7 +1057,8 @@
         {
           "canonicalName": "Add Impossible Chorizo",
           "aliases": [
-            "Impossible Chorizo"
+            "Impossible Chorizo",
+            "Extra Impossible Chorizo"
           ],
           "deltas": {
             "calories": 130,
@@ -1067,7 +1072,8 @@
         {
           "canonicalName": "Add Beyond Chorizo",
           "aliases": [
-            "Beyond Chorizo"
+            "Beyond Chorizo",
+            "Extra Beyond Chorizo"
           ],
           "deltas": {
             "calories": 140,
@@ -1299,7 +1305,8 @@
           "aliases": [
             "Chicken",
             "Add Grilled Chicken",
-            "Roasted Chicken Breast"
+            "Roasted Chicken Breast",
+            "Extra Chicken"
           ],
           "deltas": {
             "calories": 110,
@@ -1571,7 +1578,8 @@
           "aliases": [
             "Chicken",
             "Add Grilled Chicken",
-            "Roasted Chicken Breast"
+            "Roasted Chicken Breast",
+            "Extra Chicken"
           ],
           "deltas": {
             "calories": 110,
@@ -1588,7 +1596,8 @@
           "aliases": [
             "Baked Marinated Tofu",
             "Marinated Tofu",
-            "Tofu"
+            "Tofu",
+            "Extra Baked Marinated Tofu"
           ],
           "deltas": {
             "calories": 210,
@@ -1638,7 +1647,8 @@
         {
           "canonicalName": "Add Chicken Adobado",
           "aliases": [
-            "Chicken Adobado"
+            "Chicken Adobado",
+            "Extra Chicken Adobado"
           ],
           "deltas": {
             "calories": 100,
@@ -1652,7 +1662,8 @@
         {
           "canonicalName": "Add Impossible Chorizo",
           "aliases": [
-            "Impossible Chorizo"
+            "Impossible Chorizo",
+            "Extra Impossible Chorizo"
           ],
           "deltas": {
             "calories": 130,
@@ -1704,7 +1715,8 @@
           "aliases": [
             "Chicken",
             "Add Grilled Chicken",
-            "Roasted Chicken Breast"
+            "Roasted Chicken Breast",
+            "Extra Chicken"
           ],
           "deltas": {
             "calories": 110,
@@ -1757,7 +1769,8 @@
           "aliases": [
             "Chicken",
             "Add Grilled Chicken",
-            "Roasted Chicken Breast"
+            "Roasted Chicken Breast",
+            "Extra Chicken"
           ],
           "deltas": {
             "calories": 110,
@@ -1774,7 +1787,8 @@
           "aliases": [
             "Baked Marinated Tofu",
             "Marinated Tofu",
-            "Tofu"
+            "Tofu",
+            "Extra Baked Marinated Tofu"
           ],
           "deltas": {
             "calories": 210,

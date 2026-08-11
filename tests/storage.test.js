@@ -30,3 +30,36 @@ test("pickPacks keeps bundled when stored pack is invalid", () => {
 
   assert.equal(pickPacks(invalid, bundled)[0].version, 1);
 });
+
+test("getBundledPacks loads every pack in the index and skips a broken one", async () => {
+  const second = { ...base, id: "sweetgreen", displayName: "Sweetgreen", matchHints: ["sweetgreen"] };
+  const files = {
+    "packs/index.json": { packs: ["mendocino-farms.json", "sweetgreen.json", "broken.json"] },
+    "packs/mendocino-farms.json": base,
+    "packs/sweetgreen.json": second,
+    "packs/broken.json": { id: "broken" }, // fails validatePack
+  };
+
+  globalThis.chrome = { runtime: { getURL: (path) => path } };
+  globalThis.fetch = async (path) => ({
+    ok: path in files,
+    json: async () => files[path],
+  });
+
+  const { getBundledPacks } = await import(
+    `../extension/lib/storage.js?multi=${Date.now()}`
+  );
+  const packs = await getBundledPacks();
+
+  assert.deepEqual(packs.map((p) => p.id), ["mendocino-farms", "sweetgreen"]);
+});
+
+test("getBundledPacks returns [] when the index is missing", async () => {
+  globalThis.chrome = { runtime: { getURL: (path) => path } };
+  globalThis.fetch = async () => ({ ok: false, json: async () => ({}) });
+
+  const { getBundledPacks } = await import(
+    `../extension/lib/storage.js?noindex=${Date.now()}`
+  );
+  await assert.rejects(getBundledPacks(), /could not load/);
+});

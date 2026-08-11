@@ -63,12 +63,18 @@ test("formatDeltaText uses compact labels in stable order", () => {
   );
 });
 
-test("formatDeltaText handles negative and zero deltas", () => {
+test("formatDeltaText keeps negative deltas and drops zero ones", () => {
   assert.equal(
     formatDeltaText({ deltas: { calories: -50, carbsG: 0, sugarG: -2 } }),
-    "-50 cal · 0g C · -2g S",
+    "-50 cal · -2g S",
+    "a zero delta carries no information and crowds the row",
   );
   assert.equal(formatDeltaText(null), "");
+});
+
+test("a modifier whose published deltas are all zero renders nothing", () => {
+  assert.equal(formatDeltaText({ deltas: { calories: 0, proteinG: 0 } }), "");
+  assert.equal(createModifierDelta({ deltas: { calories: 0 } }), null);
 });
 
 test("list strip renders an out-of-flow photo band carrying all seven macros", () => {

@@ -23,13 +23,31 @@ export function pickPacks(storedPacks, bundledPacks) {
   return [...byId.values()];
 }
 
+const PACK_INDEX_PATH = "packs/index.json";
+
+async function fetchJson(path) {
+  const response = await fetch(chrome.runtime.getURL(path));
+  if (!response.ok) throw new Error(`could not load ${path}`);
+  return response.json();
+}
+
+// The index is generated at build time from the contents of packs/ — adding a
+// restaurant means adding one file, not editing this loader. One malformed
+// pack is skipped rather than taking every other restaurant down with it.
 export async function getBundledPacks() {
-  const url = chrome.runtime.getURL("packs/mendocino-farms.json");
-  const response = await fetch(url);
-  const json = await response.json();
-  const result = validatePack(json);
-  if (!result.ok) throw new Error(result.error);
-  return [result.pack];
+  const index = await fetchJson(PACK_INDEX_PATH);
+  const files = Array.isArray(index?.packs) ? index.packs : [];
+
+  const packs = [];
+  for (const file of files) {
+    try {
+      const result = validatePack(await fetchJson(`packs/${file}`));
+      if (result.ok) packs.push(result.pack);
+    } catch {
+      // Skip an unreadable pack; the rest of the restaurants still load.
+    }
+  }
+  return packs;
 }
 
 export async function getPacks() {

@@ -320,35 +320,36 @@ export function findDetailNameEl(doc = document) {
   }
 }
 
-const MODIFIER_ROW_SELECTORS = [
-  '[data-anchor-id*="OptionRow"], [data-anchor-id*="Option"]',
-  "[data-testid*='OptionRow'], [data-testid*='ModifierOption'], [data-testid*='Option']",
-  "[class*='OptionRow'], [class*='ModifierOption'], [class*='OptionItem']",
-];
-
-function checkboxLabelRoots(scope) {
-  return safeQueryAll(scope, "label").filter((label) =>
-    safeQuery(label, 'input[type="checkbox"], input[type="radio"]'));
-}
+// Verified 2026-08-11 against a real Chicken Pesto Caprese modal: DoorDash
+// renders no OptionRow/ModifierOption testids or classes, and the <label> is a
+// sibling of its <input>, not an ancestor — so every previous selector tier
+// matched nothing. The toggle controls themselves are the stable anchor.
+const MODIFIER_TOGGLE_SELECTOR = 'input[type="checkbox"], input[type="radio"]';
+const TOGGLE_ROW_MAX_DEPTH = 6;
 
 function modifierRowRoots(scope) {
-  for (const selector of MODIFIER_ROW_SELECTORS) {
-    const found = safeQueryAll(scope, selector);
-    if (found.length) return found;
+  const roots = [];
+  for (const input of safeQueryAll(scope, MODIFIER_TOGGLE_SELECTOR)) {
+    let el = input;
+    for (let depth = 0; depth < TOGGLE_ROW_MAX_DEPTH && el.parentElement; depth += 1) {
+      el = el.parentElement;
+      if (textOf(el).length >= 2) {
+        roots.push(el);
+        break;
+      }
+    }
   }
-  return checkboxLabelRoots(scope);
+  return roots;
 }
 
-function findModifierNameEl(root) {
-  return (
-    safeQuery(root, "[data-testid*='label'], [data-testid*='Label']")
-    || safeQuery(root, "[class*='OptionName'], [class*='Label'], [class*='label']")
-    || safeQuery(root, "span")
-  );
-}
+// Row text runs together without separators, e.g.
+// "Gluten Free Bread (Toasted)+$2.34Includes customization". The option name
+// is everything before the price or the customization note.
+const MODIFIER_NAME_TAIL = /\s*(?:\+?\s?\$\s?\d|Includes\b).*$/s;
 
-function stripTrailingPrice(text) {
-  return text.replace(/\+?\s?\$\s?\d+(?:\.\d{2})?\s*$/, "").trim();
+function modifierNameFrom(root) {
+  const raw = textOf(safeQuery(root, "label")) || textOf(root);
+  return raw.replace(MODIFIER_NAME_TAIL, "").trim();
 }
 
 export function findModifierNodes(doc = document) {
@@ -356,12 +357,10 @@ export function findModifierNodes(doc = document) {
   try {
     const scope = findModalRoot(doc);
     for (const root of modifierRowRoots(scope)) {
-      const nameEl = findModifierNameEl(root);
-      const name = stripTrailingPrice(textOf(nameEl));
+      const name = modifierNameFrom(root);
       if (!name || name.length < 2) continue;
 
-      const mountEl = nameEl.parentElement || root;
-      nodes.push({ root, name, mountEl });
+      nodes.push({ root, name, mountEl: root });
     }
   } catch {
     return [];
