@@ -23,6 +23,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 const PACK_DIR = "packs";
+const PACK_INDEX = "index.json";  // generated listing, not a pack
 const MAX_AGE_DAYS = 90;
 const UPDATE = process.argv.includes("--update");
 
@@ -40,12 +41,23 @@ async function head(url) {
 
 const problems = [];
 
-for (const file of (await readdir(PACK_DIR)).filter((f) => f.endsWith(".json"))) {
+const packFiles = (await readdir(PACK_DIR))
+  .filter((f) => f.endsWith(".json") && f !== PACK_INDEX);
+
+for (const file of packFiles) {
   const path = join(PACK_DIR, file);
   const pack = JSON.parse(await readFile(path, "utf8"));
   const { source, updatedAt, displayName } = pack;
+  const flag = (msg) => problems.push(`${displayName || file}: ${msg}`);
+
+  // A pack without a source cannot be freshness-checked; say so rather than
+  // crashing on it or passing it silently.
+  if (!source?.url) {
+    flag("no source.url — cannot check freshness");
+    continue;
+  }
+
   const age = daysSince(updatedAt);
-  const flag = (msg) => problems.push(`${displayName}: ${msg}`);
 
   let live;
   try {
