@@ -138,8 +138,9 @@ Recorded because each was green in CI while broken in the browser.
   way. The `(N cal)` note is part of the merchant-authored description text,
   which drifts independently of the formal nutrition PDF.
 
-  The pack follows the PDF, so on four of six cards a user sees two different
-  calorie figures — DoorDash's in the description, ours in the band. Accepted
-  deliberately: the PDF is the operator's published nutrition document and is
-  the only source that also supplies the other six macros. Worth raising with
-  Mendocino Farms, since one of the two is wrong on their own menu.
+  **Decided 2026-08-11: the operator's published PDF is the single source of
+  truth.** Where DoorDash's description disagrees, the PDF wins and the
+  disagreement is left visible rather than reconciled. It is also the only
+  source that supplies the other six macros, so following it keeps every
+  number on a card from one document. No further action; this is not an open
+  question.
