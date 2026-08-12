@@ -1,6 +1,6 @@
 # Manual QA
 
-Live QA run **2026-08-11** (9 of 11 items verified) against the Mendocino Farms Los Angeles store
+Live QA run **2026-08-11** (10 of 11 items verified) against the Mendocino Farms Los Angeles store
 (`/store/mendocino-farms-los-angeles-5277/`) with the unpacked extension
 loaded in Chrome.
 
@@ -53,11 +53,15 @@ Run `npm test` before manual QA (currently **69/69** passing).
 - [x] **Coverage line appears in the console** — observed live:
       `[menu-macros] pack coverage 10/14` with the four unmatched names, at
       console.debug level so it stays hidden during normal use.
-- [ ] **Popup opens only on click; refresh updates meta quietly** — requires
-      clicking the browser toolbar, which is browser chrome that automation
-      cannot drive. Must be done by hand.
+- [x] **Popup opens only on click; refresh updates meta quietly** — verified
+      by hand 2026-08-11. Refresh succeeded and updated the status quietly,
+      with no toast, badge or page notification. This was the first refresh
+      that *could* succeed: the source returned 404 until the repo was made
+      public earlier the same day.
 - [ ] **Offline / blocked refresh: last pack still renders, no toast** —
-      requires DevTools request blocking. Must be done by hand. Partial:
+      must be done by hand, and **from the service worker's own DevTools**:
+      the refresh fetch runs in the background worker, so request blocking
+      set in the *page's* DevTools does not apply to it. Partial:
       `tests/background.test.js` asserts a failed refresh keeps prior packs
       and writes failure meta only, and the extension contains no
       notification, badge, or toast API calls.
