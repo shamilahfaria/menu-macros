@@ -1,13 +1,12 @@
 # Manual QA
 
-Live QA run **2026-08-11** (10 of 11 items verified) against the Mendocino Farms Los Angeles store
+Live QA run **2026-08-11** (all 11 items verified) against the Mendocino Farms Los Angeles store
 (`/store/mendocino-farms-los-angeles-5277/`) with the unpacked extension
 loaded in Chrome.
 
 The previous revision of this file was entirely unchecked because that session
-had no browser access at all (`doordash.com` unreachable, no usable tab). That
-is no longer the case. Items below are checked only where they were observed
-on a live page, with the observation recorded.
+had no browser access at all (`doordash.com` unreachable, no usable tab). Every
+item is now verified against a live page, with the observation recorded.
 
 Run `npm test` before manual QA (currently **69/69** passing).
 
@@ -58,13 +57,13 @@ Run `npm test` before manual QA (currently **69/69** passing).
       with no toast, badge or page notification. This was the first refresh
       that *could* succeed: the source returned 404 until the repo was made
       public earlier the same day.
-- [ ] **Offline / blocked refresh: last pack still renders, no toast** —
-      must be done by hand, and **from the service worker's own DevTools**:
-      the refresh fetch runs in the background worker, so request blocking
-      set in the *page's* DevTools does not apply to it. Partial:
-      `tests/background.test.js` asserts a failed refresh keeps prior packs
-      and writes failure meta only, and the extension contains no
-      notification, badge, or toast API calls.
+- [x] **Offline / blocked refresh: last pack still renders, no toast** —
+      verified by hand 2026-08-11. Set the *service worker's* DevTools to
+      Offline (request blocking in the page's DevTools does not apply: the
+      refresh fetch runs in the background worker, a separate context with
+      its own network stack). Refresh reported failure quietly and strips
+      continued rendering from the stored pack after a hard reload. No toast,
+      badge or page notification at any point.
 
 ### Superseded spec items
 
